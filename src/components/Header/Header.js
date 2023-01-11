@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Header() {
     return (
-        <div className="Header">
+        <header className="Header">
         <ul className="header-links">
             <li><a >Home</a></li>
             <li><a >Projects</a></li>
@@ -15,6 +15,6 @@ export default function Header() {
             <li className="social">LinkedIn</li>
             <li className="social">Twitter</li>
         </ul>
-        </div>
+        </header>
     )
 }
