@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.f576a807.css",
-    "main.js": "/react-gh-pages/static/js/main.db030781.js",
-    "static/js/787.1f4a2fc7.chunk.js": "/react-gh-pages/static/js/787.1f4a2fc7.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.f576a807.css.map": "/react-gh-pages/static/css/main.f576a807.css.map",
-    "main.db030781.js.map": "/react-gh-pages/static/js/main.db030781.js.map",
-    "787.1f4a2fc7.chunk.js.map": "/react-gh-pages/static/js/787.1f4a2fc7.chunk.js.map"
+    "main.css": "/riley-gramlich-portfolio/static/css/main.f576a807.css",
+    "main.js": "/riley-gramlich-portfolio/static/js/main.acb8d788.js",
+    "index.html": "/riley-gramlich-portfolio/index.html",
+    "main.f576a807.css.map": "/riley-gramlich-portfolio/static/css/main.f576a807.css.map",
+    "main.acb8d788.js.map": "/riley-gramlich-portfolio/static/js/main.acb8d788.js.map"
   },
   "entrypoints": [
     "static/css/main.f576a807.css",
-    "static/js/main.db030781.js"
+    "static/js/main.acb8d788.js"
   ]
 }
