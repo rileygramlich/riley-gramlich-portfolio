@@ -1,0 +1,29 @@
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 20px;
+}
+
+.project-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.project-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    height: 200px;
+}
+
+.project-name {
+    font-size: 3rem;
+}

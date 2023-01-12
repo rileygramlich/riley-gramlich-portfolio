@@ -1,4 +1,4 @@
-.intro-content {
+/* .intro-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,6 +6,10 @@
     margin-left: 15%;
     margin-right: 15%;
     text-align: left;
+} */
+
+.intro {
+    font-size: 2rem;
 }
 
 .name {
@@ -16,5 +20,10 @@
 }
 
 .one-liner {
+    font-size: 1.8rem;
     color: rgb(68, 141, 161);
+}
+
+.description {
+    font-size: 1.1rem;
 }

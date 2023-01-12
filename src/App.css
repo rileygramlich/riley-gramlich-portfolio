@@ -2,7 +2,26 @@
   text-align: center;
 }
 
-.App-logo {
+.main-pages {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.main-pages > .Home, .Projects, .About, .Contact {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    text-align: left;
+}
+
+.title {
+  text-align: center;
+  font-size: 6rem;
+  color: rgb(14, 66, 138);
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +54,5 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
+
