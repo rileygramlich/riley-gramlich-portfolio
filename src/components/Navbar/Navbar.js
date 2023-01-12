@@ -37,7 +37,7 @@ export default function Navbar() {
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/../../pdfs/" download="riley-gramlich-resume.pdf">
                 Resume
               </a>
             </li>
