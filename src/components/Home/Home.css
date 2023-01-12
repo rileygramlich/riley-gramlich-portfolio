@@ -1,0 +1,20 @@
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: left;
+}
+
+.name {
+    letter-spacing: 5px;
+    font-size: 7.6rem;    
+    font-weight: bold;
+    color: rgb(14, 66, 138);
+}
+
+.one-liner {
+    color: rgb(68, 141, 161);
+}
