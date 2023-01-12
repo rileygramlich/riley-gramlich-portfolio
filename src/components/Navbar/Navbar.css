@@ -1,0 +1,12 @@
+.socials {
+    display: flex;
+    list-style: none;
+}
+
+.navbar {
+    background-color: #274c77;
+}
+
+.navbar-brand {
+    font-size: 40px;
+}
