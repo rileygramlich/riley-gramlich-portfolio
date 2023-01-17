@@ -1,15 +1,21 @@
 .Contact {
-    text-align: center;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-inline: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-inline: 300px;
 }
 
 form > * {
-    border: none;
-    font-size: 30px;
+  border: none;
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 1333px) {
+  form {
+    margin-inline: 0;
+  }
 }

@@ -3,7 +3,7 @@ import "./Projects.css"
 
 export default function Projects() {
   return (
-    <div className="Projects" id="projects">
+    <div className="Projects hidden" id="projects">
       <h1 className="title">Projects</h1>
       <div className="project-container">
         <div className="project-details">
