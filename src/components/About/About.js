@@ -33,6 +33,7 @@ export default function About() {
             <li className="skill">SQL</li>
             <li className="skill">PostgreSQL</li>
             <li className="skill">DevOps</li>
+            <li className="skill">Linux</li>
           </ul>
         </div>
       </div>

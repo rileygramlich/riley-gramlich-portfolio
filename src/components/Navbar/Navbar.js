@@ -1,5 +1,6 @@
 import React from "react";
 import './Navbar.css'
+import { FaGithub, FaTwitter, FaLinkedin} from "react-icons/fa"
 
 export default function Navbar() {
   return (
@@ -46,18 +47,18 @@ export default function Navbar() {
             <ul class="navbar-nav mr-auto socials">
               <li class="nav-item ">
                 <a class="nav-link" href="https://github.com/rileygramlich" target="_blank">
-                  Github
+                  <FaGithub/>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://www.linkedin.com/in/rileygramlich/" target="_blank">
-                  LinkedIn
+                  <FaLinkedin/>
                   <i class="fa-regular fa-house"></i>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://twitter.com/rileygramlich" target="_blank">
-                  Twitter
+                  <FaTwitter/>
                 </a>
               </li>
             </ul>

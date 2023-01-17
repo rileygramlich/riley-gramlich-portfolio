@@ -27,3 +27,24 @@
 .description {
     font-size: 1.1rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .Home {
+        display: flex;
+        margin: none;
+        justify-content: center;
+        align-content: top;
+    }
+    .intro {
+        font-size: 1rem;
+    }
+    .name {
+        font-size: 2rem;
+    }
+    .one-liner {
+        font-size: 1rem;
+    }
+    .description {
+        font-size: 1.3rem;
+    }
+}

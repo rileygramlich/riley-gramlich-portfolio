@@ -1,0 +1,15 @@
+.Contact {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-inline: 300px;
+}
+
+form > * {
+    border: none;
+    font-size: 30px;
+}

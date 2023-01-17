@@ -5,8 +5,10 @@
 
 .navbar {
     background-color: #274c77;
+    width: 100vw;
 }
 
 .navbar-brand {
-    font-size: 40px;
+    font-size: 15px;
 }
+
