@@ -1,6 +1,7 @@
 .socials {
     display: flex;
     list-style: none;
+    font-size: 20px;
 }
 
 .navbar {
@@ -12,3 +13,14 @@
     font-size: 30px;
 }
 
+#resume {
+    background-color: aquamarine;
+    border: 1px solid aquamarine;
+    border-radius: 30px;
+    color:black;
+    }
+
+#resume:hover {
+    color: aquamarine;
+    background-color: black;
+}

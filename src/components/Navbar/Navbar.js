@@ -3,6 +3,8 @@ import './Navbar.css'
 import { FaGithub, FaTwitter, FaLinkedin} from "react-icons/fa"
 
 export default function Navbar() {
+
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -37,8 +39,8 @@ export default function Navbar() {
                 Contact
               </a>
             </li>
-            <li className="nav-item active">
-              <a className="nav-link" href="/../../pdfs/" download="riley-gramlich-resume.pdf">
+            <li className="nav-item active resume">
+              <a className="nav-link" id='resume' href="/../../pdfs/" download="riley-gramlich-resume.pdf">
                 Resume
               </a>
             </li>
