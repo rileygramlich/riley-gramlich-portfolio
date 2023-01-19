@@ -1,9 +1,21 @@
-import React from "react";
+import React, {useRef, useState, useEffect} from "react";
 import "./Projects.css"
 
 export default function Projects() {
+  const targetRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {;
+        const entry = entries[0]
+        setIsVisible(entry.isIntersecting)
+      })
+      observer.observe(targetRef.current);
+    }, []);
+
+  const className = "Projects hidden " + (isVisible ? "show" : "") 
   return (
-    <div className="Projects hidden" id="projects">
+    <div ref={targetRef} className={className} id="projects">
       <h1 className="title">Projects</h1>
       <div className="project-container">
         <div className="project-details">

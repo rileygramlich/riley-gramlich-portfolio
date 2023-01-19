@@ -1,8 +1,23 @@
-import React, { useRef } from "react";
+import React, {useRef, useState, useEffect} from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 export default function Contact() {
+  const targetRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {;
+        const entry = entries[0]
+        setIsVisible(entry.isIntersecting)
+      })
+      observer.observe(targetRef.current);
+    }, []);
+
+
+  const className = "Contact hidden " + (isVisible ? "show" : "") 
+
+
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -26,7 +41,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="Contact hidden">
+    <div ref={targetRef} className={className}>
       <h1 className="title">Email Me!</h1>
       <form ref={form} onSubmit={sendEmail}>
         <label>Name:</label>
