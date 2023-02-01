@@ -40,7 +40,7 @@ export default function Navbar() {
               </a>
             </li>
             <li className="nav-item active resume">
-              <a className="nav-link" id='resume' href="/../../pdfs/" download="riley-gramlich-resume.pdf">
+              <a className="nav-link" id='resume' href="/pdfs/riley-gramlich-resume.pdf" download="riley-gramlich-resume.pdf">
                 Resume
               </a>
             </li>
