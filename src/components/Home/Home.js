@@ -1,6 +1,5 @@
 import React, {useRef, useState, useEffect} from "react";
 import "./Home.css";
-import useElementInView from "../../hooks/useElementInView";
 
 export default function Home() {
   const targetRef = useRef();

@@ -20,16 +20,16 @@ export default function Projects() {
       <div className="project-container">
         <div className="project-details">
           <div className="details">
-            <h3 className="project-name">Checkers</h3>
+            <h3 className="project-name">Scribist</h3>
             <p className="project-description">
-              A web-browser version of Checkers.
+              A writing app to create and edit documents, write in Berserk mode, and test your typing speed.
             </p>
-            <p className="project-skills">HTML, CSS, JavaScript</p>
+            <p className="project-skills">MERN Stack (React, Node.JS, ExpressJS, MongoDB), socket.io, API fetching</p>
             <p className="more-info">Click on the image for more info</p>
           </div>
           <div className="project-gif">
-            <a href="https://github.com/rileygramlich/checkers" target='_blank'>
-            <img src="https://github.com/rileygramlich/checkers/blob/main/img/Screenshot2.png?raw=true" alt="gif of checkers game" />
+            <a href="https://github.com/rileygramlich/scribist" target='_blank'>
+            <img src="https://github.com/rileygramlich/scribist/raw/main/public/img/doc-dark.png" alt="gif of checkers game" />
             </a>
           </div>
         </div>
@@ -45,6 +45,21 @@ export default function Projects() {
           <div className="project-gif">
             <a href="https://github.com/rileygramlich/glossa-galore" target='_blank'>
             <img src="https://github.com/rileygramlich/glossa-galore/raw/main/public/images/learn-1.png" alt="gif of checkers game" />
+            </a>
+          </div>
+        </div>
+        <div className="project-details">
+          <div className="details">
+            <h3 className="project-name">Checkers</h3>
+            <p className="project-description">
+              A web-browser version of Checkers.
+            </p>
+            <p className="project-skills">HTML, CSS, JavaScript</p>
+            <p className="more-info">Click on the image for more info</p>
+          </div>
+          <div className="project-gif">
+            <a href="https://github.com/rileygramlich/checkers" target='_blank'>
+            <img src="https://github.com/rileygramlich/checkers/blob/main/img/Screenshot2.png?raw=true" alt="gif of checkers game" />
             </a>
           </div>
         </div>
