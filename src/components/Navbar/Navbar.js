@@ -40,7 +40,7 @@ export default function Navbar() {
               </a>
             </li>
             <li className="nav-item active resume">
-              <a className="nav-link" id='resume' href="/pdfs/riley-gramlich-resume.pdf" download="riley-gramlich-resume.pdf">
+              <a className="nav-link" id='resume' href="./pdfs/riley-gramlich-resume.pdf" download="riley-gramlich-resume.pdf" rel="noopener noreferrer">
                 Resume
               </a>
             </li>
@@ -48,18 +48,18 @@ export default function Navbar() {
           <span className="navbar-text socials">
             <ul className="navbar-nav mr-auto socials">
               <li className="nav-item ">
-                <a className="nav-link" href="https://github.com/rileygramlich" target="_blank">
+                <a className="nav-link" href="https://github.com/rileygramlich" target="_blank" rel="noopener noreferrer">
                   <FaGithub/>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="https://www.linkedin.com/in/rileygramlich/" target="_blank">
+                <a className="nav-link" href="https://www.linkedin.com/in/rileygramlich/" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin/>
                   <i className="fa-regular fa-house"></i>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="https://twitter.com/rileygramlich" target="_blank">
+                <a className="nav-link" href="https://twitter.com/rileygramlich" target="_blank" rel="noopener noreferrer">
                   <FaTwitter/>
                 </a>
               </li>
