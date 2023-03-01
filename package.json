@@ -1,8 +1,8 @@
 {
   "name": "riley-gramlich-portfolio",
   "version": "0.1.0",
-  "homepage": "https://rileygramlich.github.io/riley-gramlich-portfolio",
-  "private": true,
+  "homepage": "https://rileygramlich.dev",
+  "private": false,
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
