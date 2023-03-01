@@ -21,11 +21,11 @@ export default function Home() {
         <p className="intro">Hello, welcome to my porfolio! My name is</p>
         <h1 className="name">Riley Gramlich</h1>
         <h3 className="one-liner">
-          I like to problem solve and build good apps
+          I like to problem solve and build great apps
         </h3>
         <p className="description">
-          I'm a Full Stack Software Developer interested in advancing my career
-          with cool teams
+          I'm a Full Stack Software Developer interested in
+          with working with motivated teams
         </p>
       </div>
     </div>
