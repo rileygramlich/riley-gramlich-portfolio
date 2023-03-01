@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/riley-gramlich-portfolio/static/css/main.dfcb7df6.css",
-    "main.js": "/riley-gramlich-portfolio/static/js/main.5837f8e4.js",
-    "index.html": "/riley-gramlich-portfolio/index.html",
-    "main.dfcb7df6.css.map": "/riley-gramlich-portfolio/static/css/main.dfcb7df6.css.map",
-    "main.5837f8e4.js.map": "/riley-gramlich-portfolio/static/js/main.5837f8e4.js.map"
+    "main.css": "./static/css/main.dfcb7df6.css",
+    "main.js": "./static/js/main.5837f8e4.js",
+    "index.html": "./index.html",
+    "main.dfcb7df6.css.map": "./static/css/main.dfcb7df6.css.map",
+    "main.5837f8e4.js.map": "./static/js/main.5837f8e4.js.map"
   },
   "entrypoints": [
     "static/css/main.dfcb7df6.css",
