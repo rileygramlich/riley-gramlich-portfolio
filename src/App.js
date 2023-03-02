@@ -6,24 +6,42 @@ import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 
+import React, {useRef, useEffect} from "react";
+import useElementInView from "./hooks/useElementInView";
+
+// import * from "react-intersection-observer"
+
 function App() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      } else {
-        entry.target.classList.remove("show");
-      }
-    });
-  });
+  const targetRef = useRef(null);
+  const isVisible = useElementInView({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3
+  }, targetRef)
 
-  let target = document.querySelector(".hidden");
-  observer.observe(target);
+  // const myRef = useRef()
+  // useEffect(() => {
+  //   console.log('myRef', myRef.current)
+  // }, [])
 
-  // the callback we setup for the observer will be executed now for the first time
-  // it waits until we assign a target to our observer (even if the target is currently not visible)
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach((entry) => {
+  //     if (entry.isIntersecting) {
+  //       console.log('removing show');
+  //       entry.target.classList.add("show");
+  //     } else {
+  //       console.log('removing show');
+  //       entry.target.classList.remove("show");
+  //     }
+  //   });
+  // });
 
-  // const hiddenElements = document.querySelectorAll(".hidden");
+  // useEffect(() => {
+  //   console.log('changing class to .show')
+  // })
+
+
+  // setHiddenElements(document.querySelectorAll(".hidden"))
   // hiddenElements.forEach((el) => observer.observe(el));
 
   return (
@@ -31,7 +49,7 @@ function App() {
       <Navbar />
       <div className="main-pages">
         <Home />
-        <Projects />
+        <Projects/>
         <About />
         <Contact />
       </div>

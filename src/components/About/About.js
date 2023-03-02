@@ -1,9 +1,23 @@
-import React from "react";
+import React, {useRef, useState, useEffect} from "react";
+
 import "./About.css";
 
 export default function About() {
+  const targetRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {;
+        const entry = entries[0]
+        setIsVisible(entry.isIntersecting)
+      })
+      observer.observe(targetRef.current);
+    }, []);
+
+  const className = "About hidden " + (isVisible ? "show" : "") 
+
   return (
-    <div className="About hidden" id="about">
+    <div ref={targetRef} className={className} id="about">
       <h1 className="title">About Me</h1>
       <div className="about-content">
         <div className="bit">

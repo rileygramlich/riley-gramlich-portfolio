@@ -9,28 +9,28 @@ export default function Footer() {
       &copy; 2023 Designed & Developed by Riley Gramlich
       </h3>
       <ul className="socials">
-        <li class="nav-item ">
+        <li className="nav-item ">
           <a
-            class="nav-link"
+            className="nav-link"
             href="https://github.com/rileygramlich"
             target="_blank"
           >
             <FaGithub />
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             href="https://www.linkedin.com/in/rileygramlich/"
             target="_blank"
           >
             <FaLinkedin />
-            <i class="fa-regular fa-house"></i>
+            <i className="fa-regular fa-house"></i>
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             href="https://twitter.com/rileygramlich"
             target="_blank"
           >

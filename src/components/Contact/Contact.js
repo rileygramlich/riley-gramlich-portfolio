@@ -1,20 +1,27 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 export default function Contact() {
+  const targetRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setIsVisible(entry.isIntersecting);
+    });
+    observer.observe(targetRef.current);
+  }, []);
+
+  const className = "Contact hidden " + (isVisible ? "show" : "");
+
   const form = useRef();
 
-  const sendEmail = (e) => {
+  function sendEmail(e) {
     e.preventDefault();
-
     emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
-      )
+      .sendForm("service_ay4nvn7", "template_iw49qpe", e.target, "KPjUKtAwiIoLni6eI")
       .then(
         (result) => {
           console.log(result.text);
@@ -23,18 +30,21 @@ export default function Contact() {
           console.log(error.text);
         }
       );
-  };
+    e.target.reset();
+  }
 
   return (
-    <div className="Contact hidden">
+    <div ref={targetRef} className={className} id="contact">
       <h1 className="title">Email Me!</h1>
       <form ref={form} onSubmit={sendEmail}>
         <label>Name:</label>
-        <input type="text" name="user_name" className="input-name"/>
+        <input type="text" name="name" className="input-name" />
         <label>Email:</label>
-        <input type="email" name="user_email" className="input-email"/>
+        <input type="email" name="email" className="input-email" />
+        <label>Subject:</label>
+        <input name="subject" className="input-class" />
         <label>Message:</label>
-        <textarea name="message" className="input-class"/>
+        <textarea name="message" className="input-class" />
         <input type="submit" value="Send" />
       </form>
     </div>

@@ -1,8 +1,8 @@
 {
   "name": "riley-gramlich-portfolio",
   "version": "0.1.0",
-  "homepage": "https://rileygramlich.github.io/riley-gramlich-portfolio",
-  "private": true,
+  "homepage": "https://rileygramlich.github.io/riley-gramlich-portfolio/",
+  "private": false,
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-intersection-observer": "^9.4.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
