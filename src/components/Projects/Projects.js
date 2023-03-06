@@ -29,7 +29,7 @@ export default function Projects() {
           </div>
           <div className="project-gif">
             <a href="https://github.com/rileygramlich/scribist" target='_blank'>
-            <img src="https://github.com/rileygramlich/scribist/raw/main/public/img/doc-dark.png" alt="gif of checkers game" />
+            <img src="https://github.com/rileygramlich/scribist/raw/main/public/img/doc-dark.png" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function Projects() {
           </div>
           <div className="project-gif">
             <a href="https://github.com/rileygramlich/glossa-galore" target='_blank'>
-            <img src="https://github.com/rileygramlich/glossa-galore/raw/main/public/images/learn-1.png" alt="gif of checkers game" />
+            <img src="https://github.com/rileygramlich/glossa-galore/raw/main/public/images/learn-1.png" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
         </div>
@@ -59,7 +59,7 @@ export default function Projects() {
           </div>
           <div className="project-gif">
             <a href="https://github.com/rileygramlich/checkers" target='_blank'>
-            <img src="https://github.com/rileygramlich/checkers/blob/main/img/Screenshot2.png?raw=true" alt="gif of checkers game" />
+            <img src="https://github.com/rileygramlich/checkers/blob/main/img/Screenshot2.png?raw=true" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function Projects() {
           </div>
           <div className="project-gif">
             <a href="https://github.com/rileygramlich/knowme_app" target='_blank'>
-            <img src="https://github.com/rileygramlich/knowme_app/raw/main/screenshots/createquestion.jpeg" alt="gif of checkers game" />
+            <img src="https://github.com/rileygramlich/knowme_app/raw/main/screenshots/createquestion.jpeg" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
         </div>

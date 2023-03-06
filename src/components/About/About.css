@@ -47,3 +47,20 @@ h3 {
         height: fit-content;
     }
 }
+
+.skills-contain {
+    margin-top: 40px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.headshot {
+    height: 400px;
+    max-height: 500px;
+    max-width: 500px;
+    border-radius: 20%;
+}

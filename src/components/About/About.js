@@ -2,6 +2,8 @@ import React, {useRef, useState, useEffect} from "react";
 
 import "./About.css";
 
+import headshot from '../../imgs/headshot.jpg'
+
 export default function About() {
   const targetRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
@@ -32,25 +34,33 @@ export default function About() {
           </p>
         </div>
 
-        <div>
+        <div className="pic-container">
+          <img src={headshot} alt="photo of me" className="headshot"/>
+        </div>
+      </div>
+
+        <div className="skills-contain">
           <h3>Here are some things I excel at:</h3>
           <ul className="skills">
-            <li className="skill">Javascript</li>
+            <li className="skill">JavaScript</li>
+            <li className="skill">TypeScript</li>
             <li className="skill">HTML</li>
             <li className="skill">CSS</li>
-            <li className="skill">React</li>
+            <li className="skill">MERN Stack</li>
             <li className="skill">MondoDB</li>
             <li className="skill">Express</li>
+            <li className="skill">ReactJS</li>
             <li className="skill">Node.js</li>
             <li className="skill">Python</li>
             <li className="skill">Django</li>
             <li className="skill">SQL</li>
             <li className="skill">PostgreSQL</li>
+            <li className="skill">Git/GitHub</li>
+            <li className="skill">RESTful APIs</li>
             <li className="skill">DevOps</li>
             <li className="skill">Linux</li>
           </ul>
         </div>
-      </div>
     </div>
   );
 }
