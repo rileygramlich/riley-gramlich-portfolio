@@ -23,14 +23,10 @@ export default function About() {
       <h1 className="title">About Me</h1>
       <div className="about-content">
         <div className="bit">
-          <h3 className="about-me">A bit about me:</h3>
           <p className="about-me">
-            I am a full stack web developer with a drive to bring useful web
-            applications to people that improve their lives by building
-            efficient user experiences. I am passionate and motivated to work on
-            problems that improve and progress the lives of people. I would love
-            to work on Artificial General Intelligence in the future and/or
-            contribute to humanity’s exploration of Space.
+          Hi, I'm Riley Gramlich, a dedicated software developer with a passion for crafting innovative solutions. I bring a wealth of experience in full-stack development and expertise in a variety of technologies, from JavaScript to .NET. My commitment to excellence is matched by my ability to collaborate effectively with diverse teams, delivering outstanding results. I'm self-motivated, hardworking, and deeply value honesty and trustworthiness. I'm excited about the opportunity to contribute to impactful projects and create efficient, user-friendly applications. Let's explore the possibilities of working together and making a meaningful impact through innovative software solutions.
+
+Feel free to reach out if you'd like to connect or learn more about my professional journey. 
           </p>
         </div>
 
@@ -59,6 +55,8 @@ export default function About() {
             <li className="skill">RESTful APIs</li>
             <li className="skill">DevOps</li>
             <li className="skill">Linux</li>
+            <li className="skill">C#</li>
+            <li className="skill">ASP.NET</li>
           </ul>
         </div>
     </div>

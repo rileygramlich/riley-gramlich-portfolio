@@ -64,3 +64,29 @@ h3 {
     max-width: 500px;
     border-radius: 20%;
 }
+
+ul.skills {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Style each skill item */
+li.skill {
+    background-color: #3498db;
+    color: rgb(228, 241, 254);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+    cursor: none;
+}
+
+/* Add hover animation */
+li.skill:hover {
+    transform: scale(1.1);
+}
+
