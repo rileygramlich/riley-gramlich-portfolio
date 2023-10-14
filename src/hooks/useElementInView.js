@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function useElementInView(options, targetRef) {
   const [isVisible, setIsVisible] = useState(false);
