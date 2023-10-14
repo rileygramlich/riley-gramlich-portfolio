@@ -28,7 +28,7 @@ export default function Projects() {
             <p className="more-info">Click on the image for more info</p>
           </div>
           <div className="project-gif">
-            <a href="https://github.com/rileygramlich/scribist" target='_blank'>
+            <a href="https://github.com/rileygramlich/scribist" target='_blank' rel="noopener noreferrer">
             <img src="https://github.com/rileygramlich/scribist/raw/main/public/img/doc-dark.png" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
@@ -43,7 +43,7 @@ export default function Projects() {
             <p className="more-info">Click on the image for more info</p>
           </div>
           <div className="project-gif">
-            <a href="https://github.com/rileygramlich/glossa-galore" target='_blank'>
+            <a href="https://github.com/rileygramlich/glossa-galore" target='_blank' rel="noopener noreferrer">
             <img src="https://github.com/rileygramlich/glossa-galore/raw/main/public/images/learn-1.png" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
@@ -58,7 +58,7 @@ export default function Projects() {
             <p className="more-info">Click on the image for more info</p>
           </div>
           <div className="project-gif">
-            <a href="https://github.com/rileygramlich/checkers" target='_blank'>
+            <a href="https://github.com/rileygramlich/checkers" target='_blank' rel="noopener noreferrer">
             <img src="https://github.com/rileygramlich/checkers/blob/main/img/Screenshot2.png?raw=true" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>
@@ -73,7 +73,7 @@ export default function Projects() {
             <p className="more-info">Click on the image for more info</p>
           </div>
           <div className="project-gif">
-            <a href="https://github.com/rileygramlich/knowme_app" target='_blank'>
+            <a href="https://github.com/rileygramlich/knowme_app" target='_blank' rel="noopener noreferrer">
             <img src="https://github.com/rileygramlich/knowme_app/raw/main/screenshots/createquestion.jpeg" alt="gif of checkers game" className="project-img"/>
             </a>
           </div>

@@ -14,6 +14,7 @@ export default function Footer() {
             className="nav-link"
             href="https://github.com/rileygramlich"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub />
           </a>
@@ -23,6 +24,7 @@ export default function Footer() {
             className="nav-link"
             href="https://www.linkedin.com/in/rileygramlich/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedin />
             <i className="fa-regular fa-house"></i>
@@ -33,6 +35,7 @@ export default function Footer() {
             className="nav-link"
             href="https://twitter.com/rileygramlich"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaTwitter />
           </a>
