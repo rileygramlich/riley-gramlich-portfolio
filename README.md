@@ -2,26 +2,20 @@
 
 ## About
 
-This is my personal portfolio featuring my most treasured projects along with more info about what I'm all about!  [Check it out!]()
+This is my personal portfolio featuring my most treasured projects along with more info about what I'm all about! [Check it out!]()
 
 ---
 
-<br>
+<!-- <br> -->
 
-## Screenshots
+<!-- ## Screenshots
 
-
-Coming Soon!
 
 ---
-<br>
-
+<br> -->
 
 ## Technologies Used
-- React
-- JavaScript
-- CSS
 
----
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+-   React
+-   JavaScript
+-   CSS
