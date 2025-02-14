@@ -44,7 +44,6 @@ export default function Navbar() {
                                 className="nav-link"
                                 id="resume"
                                 href="./pdfs/riley-gramlich-resume.pdf"
-                                download="riley-gramlich-resume.pdf"
                                 rel="noopener noreferrer"
                             >
                                 Resume
