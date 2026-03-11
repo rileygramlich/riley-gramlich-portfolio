@@ -2,7 +2,7 @@
 
 ## About
 
-This is my personal portfolio featuring my most treasured projects along with more info about what I'm all about! [Check it out!]()
+This is my personal portfolio featuring my most treasured projects along with more info about what I'm all about! [Check it out!](https://rileygramlich.dev/)
 
 ---
 
