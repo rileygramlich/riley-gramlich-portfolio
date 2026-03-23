@@ -1,69 +1,80 @@
 .App {
-  text-align: center;
-  width: 100vw;
+    width: 100%;
+    color: var(--ink-1);
 }
 
 .main-pages {
-  margin-left: 15%;
-  margin-right: 15%;
+    width: min(1120px, 90vw);
+    margin: 0 auto;
+    padding-top: 1.5rem;
+}
+
+.main-pages section {
+    scroll-margin-top: 7.2rem;
 }
 
 .main-pages > .Home,
+.Services,
+.Clients,
 .Projects,
 .About,
 .Contact {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: left;
-}
-
-.title {
-  text-align: center;
-  font-size: 6rem;
-  color: rgb(14, 66, 138);
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    width: 100vw;
-    margin: 0;
-  }
-  .main-pages > .Home,
-  .Projects,
-  .About,
-  .Contact {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: min(880px, 100vh);
     text-align: left;
-  }
-  h1 {
-    font-size: 50px;
-  }
+    padding: 4.25rem 0;
+}
+
+.title {
+    font-family: var(--font-accent);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.02em;
+    color: var(--ink-0);
+    margin-bottom: 0.9rem;
+}
+
+.section-subtitle {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 1.06rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-pages > .Home,
+    .Services,
+    .Clients,
+    .Projects,
+    .About,
+    .Contact {
+        min-height: auto;
+        padding: 3rem 0;
+    }
 }
 
 /* ANIMATIONS */
 
 .hidden {
-  opacity: 0;
-  transition: all 1.5s;
-  filter: blur(5px);
-  transform: translateX(-100%);
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(2px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.55s ease,
+        filter 0.45s ease;
 }
 
 .show {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
 }
-
 
 @media (prefers-reduced-motion) {
-  .hidden {
-    transition: all 1s;
-  }
+    .hidden {
+        transition: opacity 0.2s ease;
+        filter: blur(0);
+        transform: none;
+    }
 }
-
-/* Add more animations here */

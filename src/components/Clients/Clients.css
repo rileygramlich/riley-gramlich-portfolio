@@ -1,0 +1,49 @@
+.Clients .section-subtitle {
+    max-width: 780px;
+}
+
+.client-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.client-card {
+    background: var(--surface-0);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.client-screenshot {
+    height: 180px;
+    border-radius: calc(var(--radius-lg) - 4px);
+    margin-bottom: 1rem;
+    display: grid;
+    place-items: center;
+    color: var(--ink-2);
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    background: linear-gradient(145deg, #dde8f8, #f4f8fd);
+    border: 1px dashed #adc2e4;
+}
+
+.client-card h3 {
+    margin: 0.25rem 0 0.75rem;
+    font-size: 1.3rem;
+}
+
+.client-card p {
+    margin: 0.6rem 0;
+    color: var(--ink-2);
+    line-height: 1.55;
+}
+
+@media only screen and (max-width: 900px) {
+    .client-grid {
+        grid-template-columns: 1fr;
+    }
+}

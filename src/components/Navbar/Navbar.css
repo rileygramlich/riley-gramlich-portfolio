@@ -1,26 +1,87 @@
-.socials {
-    display: flex;
-    list-style: none;
-    font-size: 20px;
-}
-
 .navbar {
-    background-color: #274c77;
-    width: 100vw;
+    width: min(1160px, 94vw);
+    margin: 1rem auto 0;
+    position: sticky;
+    top: 0.75rem;
+    z-index: 1000;
+    padding: 0.65rem 0.9rem 0.65rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--stroke);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar-brand {
-    font-size: 30px;
+    text-decoration: none;
+    color: var(--ink-0);
+    font-family: var(--font-accent);
+    font-size: 0.96rem;
+    letter-spacing: 0.02em;
+    font-weight: 700;
 }
 
-#resume {
-    background-color: aquamarine;
-    border: 1px solid aquamarine;
-    border-radius: 30px;
-    color:black;
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--ink-2);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.55rem;
+    border-radius: 8px;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--ink-0);
+    background: var(--surface-1);
+    outline: none;
+}
+
+.nav-cta {
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(120deg, var(--brand-0), var(--brand-1));
+    color: #fff;
+    font-weight: 700;
+    padding: 0.65rem 1.1rem;
+    white-space: nowrap;
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+    filter: brightness(1.05);
+    outline: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .navbar {
+        border-radius: var(--radius-lg);
+        padding: 0.9rem;
+        align-items: flex-start;
+        flex-direction: column;
+        top: 0.5rem;
     }
 
-#resume:hover {
-    color: aquamarine;
-    background-color: black;
+    .navbar-links {
+        justify-content: flex-start;
+    }
+
+    .nav-cta {
+        width: 100%;
+        text-align: center;
+    }
 }

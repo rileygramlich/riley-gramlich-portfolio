@@ -1,16 +1,44 @@
 .about-content {
-    margin-top: 3%;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-    font-size: 1.5rem;
+    gap: 1rem;
+    font-size: 1.07rem;
 }
 
-.bit{
+.bit {
     width: 50%;
 }
 
-h3 {
+.About h3 {
     font-weight: bold;
+    color: var(--ink-0);
+}
+
+.about-me {
+    margin: 0;
+    color: var(--ink-2);
+    line-height: 1.7;
+}
+
+.about-me-secondary {
+    margin-top: 1rem;
+}
+
+.capability-list {
+    padding: 1.1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--stroke);
+    background: var(--surface-0);
+    box-shadow: var(--shadow-sm);
+}
+
+.capability-list ul {
+    margin: 0.7rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--ink-2);
+    display: grid;
+    gap: 0.45rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -19,21 +47,21 @@ h3 {
         flex-direction: column;
     }
     .bit {
-        width:auto;
+        width: auto;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
-    h3 {
-        font-size: 1.5rem;
+    .About h3 {
+        font-size: 1.2rem;
     }
     .skills {
         font-size: 1rem;
     }
-    p {
+    .About p {
         font-size: 1rem;
     }
     .about-content {
@@ -41,7 +69,7 @@ h3 {
         flex-direction: column;
     }
     .bit {
-        width:auto;
+        width: auto;
     }
     .About {
         height: fit-content;
@@ -49,44 +77,44 @@ h3 {
 }
 
 .skills-contain {
-    margin-top: 40px;
+    margin-top: 1.8rem;
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+.skills-columns {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
 }
 
-.headshot {
-    height: 400px;
-    max-height: 500px;
-    max-width: 500px;
-    border-radius: 20%;
+.skills-column {
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-lg);
+    background: var(--surface-0);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow-sm);
 }
 
-ul.skills {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Style each skill item */
-li.skill {
-    background-color: #3498db;
-    color: rgb(228, 241, 254);
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1.5rem;
+.skills-column h4 {
     margin: 0;
-    transition: transform 0.3s ease-in-out;
-    cursor: none;
+    color: var(--ink-0);
+    font-size: 1rem;
 }
 
-/* Add hover animation */
-li.skill:hover {
-    transform: scale(1.1);
+.skills-column ul {
+    margin: 0.7rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--ink-2);
 }
 
+.skills-column li {
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 900px) {
+    .skills-columns {
+        grid-template-columns: 1fr;
+    }
+}

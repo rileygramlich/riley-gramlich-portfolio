@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Home.css";
+import headshot from "../../imgs/headshot.jpg";
 
 export default function Home() {
     const targetRef = useRef();
@@ -18,20 +19,46 @@ export default function Home() {
     const className = "Home hidden " + (isVisible ? "show" : "");
 
     return (
-        <div ref={targetRef} className={className}>
+        <section ref={targetRef} className={className} id="home">
             <div className="intro-content">
-                <p className="intro">
-                    Hello, welcome to my porfolio! My name is
+                <p className="eyebrow">
+                    Serving Calgary and Alberta businesses
                 </p>
-                <h1 className="name">Riley Gramlich</h1>
+                <h1 className="name">
+                    Modern software systems that save your team hours every
+                    week.
+                </h1>
                 <h3 className="one-liner">
-                    I like to solve problems and build great apps
+                    Gramlich Software Services helps local organizations
+                    streamline operations, modernize outdated tools, and launch
+                    websites that convert.
                 </h3>
                 <p className="description">
-                    I'm a Full Stack Software Developer interested in building
-                    useful software solutions
+                    From WordPress and Elementor websites to automation
+                    workflows and legacy system modernization, every project is
+                    built for measurable business outcomes.
                 </p>
+                <div className="hero-cta-group">
+                    <a className="hero-cta" href="#contact">
+                        Contact Us
+                    </a>
+                    <a className="hero-secondary-cta" href="#clients">
+                        See Client Work
+                    </a>
+                </div>
+                <ul className="hero-points">
+                    <li>Faster admin workflows</li>
+                    <li>Lower ongoing maintenance cost</li>
+                    <li>Clear communication for non-technical teams</li>
+                </ul>
             </div>
-        </div>
+            <div className="hero-photo-wrap">
+                <img
+                    src={headshot}
+                    alt="Riley Gramlich"
+                    className="hero-photo"
+                />
+            </div>
+        </section>
     );
 }
