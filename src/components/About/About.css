@@ -1,13 +1,32 @@
-.about-content {
+.about-top {
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 1.2rem;
+    align-items: center;
     font-size: 1.07rem;
 }
 
-.bit {
-    width: 50%;
+.about-bio {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-photo-panel {
+    margin: 0;
+    flex: 0 0 auto;
+    margin-bottom: 0.75rem;
+}
+
+.about-photo {
+    width: clamp(150px, 20vw, 220px);
+    aspect-ratio: 1 / 1;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 32%;
+    border: 1px solid #d7e5fb;
+    box-shadow: var(--shadow-md);
 }
 
 .About h3 {
@@ -42,11 +61,12 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .about-content {
+    .about-top {
         display: flex;
         flex-direction: column;
     }
-    .bit {
+
+    .about-photo-panel {
         width: auto;
     }
 }
@@ -64,12 +84,9 @@
     .About p {
         font-size: 1rem;
     }
-    .about-content {
+    .about-top {
         display: flex;
         flex-direction: column;
-    }
-    .bit {
-        width: auto;
     }
     .About {
         height: fit-content;

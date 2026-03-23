@@ -18,17 +18,19 @@
 }
 
 .client-screenshot {
-    height: 180px;
+    width: 100%;
+    height: 220px;
     border-radius: calc(var(--radius-lg) - 4px);
     margin-bottom: 1rem;
-    display: grid;
-    place-items: center;
-    color: var(--ink-2);
-    font-family: var(--font-accent);
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    background: linear-gradient(145deg, #dde8f8, #f4f8fd);
-    border: 1px dashed #adc2e4;
+    border: 1px solid #d7e5fb;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.25s ease;
+}
+
+.client-card > a:hover .client-screenshot,
+.client-card > a:focus-visible .client-screenshot {
+    transform: translateY(-2px);
 }
 
 .client-card h3 {
@@ -40,6 +42,24 @@
     margin: 0.6rem 0;
     color: var(--ink-2);
     line-height: 1.55;
+}
+
+.client-link {
+    margin-top: 0.4rem;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.56rem 0.92rem;
+    border-radius: 10px;
+    border: 1px solid var(--stroke);
+    background: var(--surface-0);
+    color: var(--ink-1);
+    font-weight: 700;
+}
+
+.client-link:hover,
+.client-link:focus-visible {
+    filter: brightness(1.06);
+    outline: none;
 }
 
 @media only screen and (max-width: 900px) {

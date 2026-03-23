@@ -5,6 +5,7 @@ const projects = [
     {
         name: "BlockTime",
         featured: true,
+        image: null,
         problem:
             "Teams were losing time to fragmented scheduling and unclear availability.",
         solution:
@@ -15,6 +16,7 @@ const projects = [
     },
     {
         name: "Scribist",
+        image: "https://github.com/rileygramlich/scribist/raw/main/public/img/doc-dark.png",
         problem:
             "Writers needed a distraction-free environment with real-time collaboration options.",
         solution:
@@ -25,6 +27,7 @@ const projects = [
     },
     {
         name: "Glossa Galore",
+        image: "https://github.com/rileygramlich/glossa-galore/raw/main/public/images/learn-1.png",
         problem:
             "Language learners needed a stronger community layer for consistent engagement.",
         solution:
@@ -63,6 +66,13 @@ export default function Projects() {
                         key={project.name}
                         className={`project-details ${project.featured ? "project-featured" : ""}`}
                     >
+                        {project.image && (
+                            <img
+                                src={project.image}
+                                alt={`${project.name} app screenshot`}
+                                className="project-media"
+                            />
+                        )}
                         <div className="details">
                             <p className="project-label">Case Study</p>
                             <h3 className="project-name">{project.name}</h3>

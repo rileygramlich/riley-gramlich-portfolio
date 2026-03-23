@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import headshot from "../../imgs/headshot.jpg";
 
 import "./About.css";
 
@@ -60,8 +61,8 @@ export default function About() {
     return (
         <section ref={targetRef} className={className} id="about">
             <h1 className="title">About Me</h1>
-            <div className="about-content">
-                <div className="bit">
+            <div className="about-top">
+                <div className="about-bio">
                     <p className="about-me">
                         I am Riley Gramlich, a Calgary-based software developer
                         focused on practical solutions for small and mid-sized
@@ -77,18 +78,24 @@ export default function About() {
                     </p>
                 </div>
 
-                <div className="bit capability-list">
-                    <h3>What clients value most</h3>
-                    <ul>
-                        <li>
-                            Clear timelines and straightforward communication
-                        </li>
-                        <li>Solutions that fit real team workflows</li>
-                        <li>Full-stack delivery from UI through backend</li>
-                        <li>Modern tools without unnecessary complexity</li>
-                        <li>Calgary and Alberta business context</li>
-                    </ul>
-                </div>
+                <figure className="about-photo-panel">
+                    <img
+                        src={headshot}
+                        alt="Riley Gramlich"
+                        className="about-photo"
+                    />
+                </figure>
+            </div>
+
+            <div className="capability-list">
+                <h3>What clients value most</h3>
+                <ul>
+                    <li>Clear timelines and straightforward communication</li>
+                    <li>Solutions that fit real team workflows</li>
+                    <li>Full-stack delivery from UI through backend</li>
+                    <li>Modern tools without unnecessary complexity</li>
+                    <li>Calgary and Alberta business context</li>
+                </ul>
             </div>
 
             <div className="skills-contain" id="skills">

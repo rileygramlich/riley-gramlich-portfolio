@@ -1,9 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Clients.css";
+import urbanTecImage from "../../imgs/UrbanTec-1.png";
+import prairieImage from "../../imgs/prairie-1.png";
 
 const clientWork = [
     {
         name: "UrbanTec Condominium Management Inc",
+        image: urbanTecImage,
+        website: "https://urbantec.ca",
         challenge:
             "Needed clearer operations workflows and modern tooling to reduce coordination overhead.",
         solution:
@@ -12,6 +16,8 @@ const clientWork = [
     },
     {
         name: "Prairie.edu",
+        image: prairieImage,
+        website: "https://prairie.edu",
         challenge:
             "Required scalable digital delivery support while keeping workflows simple for non-technical teams.",
         solution:
@@ -47,9 +53,18 @@ export default function Clients() {
             <div className="client-grid">
                 {clientWork.map((client) => (
                     <article key={client.name} className="client-card">
-                        <div className="client-screenshot" aria-hidden="true">
-                            Screenshot placeholder
-                        </div>
+                        <a
+                            href={client.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Visit ${client.name}`}
+                        >
+                            <img
+                                src={client.image}
+                                alt={`${client.name} website screenshot`}
+                                className="client-screenshot"
+                            />
+                        </a>
                         <h3>{client.name}</h3>
                         <p>
                             <strong>Challenge:</strong> {client.challenge}
@@ -60,6 +75,14 @@ export default function Clients() {
                         <p>
                             <strong>Impact:</strong> {client.impact}
                         </p>
+                        <a
+                            href={client.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="client-link"
+                        >
+                            Visit Site
+                        </a>
                     </article>
                 ))}
             </div>

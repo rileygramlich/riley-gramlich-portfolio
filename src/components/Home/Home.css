@@ -1,12 +1,9 @@
 .Home {
-    display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    gap: 2rem;
-    align-items: center;
+    display: block;
 }
 
 .intro-content {
-    max-width: 680px;
+    max-width: 760px;
 }
 
 .eyebrow {
@@ -82,31 +79,4 @@
 .hero-points li::before {
     content: "• ";
     color: var(--brand-1);
-}
-
-.hero-photo-wrap {
-    justify-self: end;
-}
-
-.hero-photo {
-    width: min(410px, 100%);
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    border-radius: 30px;
-    border: 1px solid #d7e5fb;
-    box-shadow: var(--shadow-md);
-}
-
-@media only screen and (max-width: 900px) {
-    .Home {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-photo-wrap {
-        justify-self: start;
-    }
-
-    .hero-photo {
-        width: min(320px, 100%);
-    }
 }

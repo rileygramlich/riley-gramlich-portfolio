@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Home.css";
-import headshot from "../../imgs/headshot.jpg";
 
 export default function Home() {
     const targetRef = useRef();
@@ -51,13 +50,6 @@ export default function Home() {
                     <li>Lower ongoing maintenance cost</li>
                     <li>Clear communication for non-technical teams</li>
                 </ul>
-            </div>
-            <div className="hero-photo-wrap">
-                <img
-                    src={headshot}
-                    alt="Riley Gramlich"
-                    className="hero-photo"
-                />
             </div>
         </section>
     );
