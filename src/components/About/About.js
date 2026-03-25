@@ -98,8 +98,8 @@ export default function About() {
                 </ul>
             </div>
 
-            <div className="skills-contain" id="skills">
-                <h3>Full-Stack Skills</h3>
+            <div className="skills-contain">
+                <h3 id="skills">Full-Stack Skills</h3>
                 <div className="skills-columns">
                     {skillGroups.map((group) => (
                         <article key={group.title} className="skills-column">

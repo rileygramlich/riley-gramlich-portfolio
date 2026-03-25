@@ -97,6 +97,10 @@
     margin-top: 1.8rem;
 }
 
+.skills-contain h3[id="skills"] {
+    scroll-margin-top: 7.2rem;
+}
+
 .skills-columns {
     margin-top: 1rem;
     display: grid;
