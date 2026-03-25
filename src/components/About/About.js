@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
+import headshot from "../../imgs/headshot.jpg";
 
 import "./About.css";
-
-import headshot from "../../imgs/headshot.jpg";
 
 export default function About() {
     const targetRef = useRef();
@@ -20,63 +19,100 @@ export default function About() {
 
     const className = "About hidden " + (isVisible ? "show" : "");
 
+    const skillGroups = [
+        {
+            title: "Frontend",
+            items: [
+                "React and JavaScript",
+                "TypeScript",
+                "Responsive UI architecture",
+                "Component libraries and design systems",
+            ],
+        },
+        {
+            title: "Backend",
+            items: [
+                "Node.js and Express APIs",
+                "Python automation services",
+                "Authentication and role-based access",
+                "Third-party integrations",
+            ],
+        },
+        {
+            title: "Data and Cloud",
+            items: [
+                "SQL and PostgreSQL",
+                "REST data modeling",
+                "Deployment and environment configuration",
+                "Monitoring and operational support",
+            ],
+        },
+        {
+            title: "Delivery",
+            items: [
+                "Discovery and technical scoping",
+                "Workflow automation with AI tooling",
+                "Legacy system modernization",
+                "Ongoing consulting and iteration",
+            ],
+        },
+    ];
+
     return (
-        <div ref={targetRef} className={className} id="about">
+        <section ref={targetRef} className={className} id="about">
             <h1 className="title">About Me</h1>
-            <div className="about-content">
-                <div className="bit">
+            <div className="about-top">
+                <div className="about-bio">
                     <p className="about-me">
-                        Hi, I'm Riley Gramlich, a dedicated software developer
-                        with a passion for crafting innovative solutions. I
-                        bring a wealth of experience in full-stack development
-                        and expertise in a variety of technologies, from
-                        JavaScript to .NET. My commitment to excellence is
-                        matched by my ability to collaborate effectively with
-                        diverse teams, delivering outstanding results. I'm
-                        self-motivated, hardworking, and deeply value honesty
-                        and trustworthiness. I'm excited about the opportunity
-                        to contribute to impactful projects and create
-                        efficient, user-friendly applications. Let's explore the
-                        possibilities of working together and making a
-                        meaningful impact through innovative software solutions.
-                        Feel free to reach out if you'd like to connect or learn
-                        more about my professional journey.
+                        I am Riley Gramlich, a Calgary-based software developer
+                        focused on practical solutions for small and mid-sized
+                        teams. My work blends product thinking with hands-on
+                        engineering so projects ship quickly and stay
+                        maintainable.
+                    </p>
+                    <p className="about-me about-me-secondary">
+                        Whether the engagement is a new website, internal tool,
+                        or process automation initiative, the goal is the same:
+                        reduce friction, improve reliability, and give your team
+                        systems they can confidently operate.
                     </p>
                 </div>
 
-                <div className="pic-container">
+                <figure className="about-photo-panel">
                     <img
                         src={headshot}
-                        alt="photo of me"
-                        className="headshot"
+                        alt="Riley Gramlich"
+                        className="about-photo"
                     />
-                </div>
+                </figure>
+            </div>
+
+            <div className="capability-list">
+                <h3>What clients value most</h3>
+                <ul>
+                    <li>Clear timelines and straightforward communication</li>
+                    <li>Solutions that fit real team workflows</li>
+                    <li>Full-stack delivery from UI through backend</li>
+                    <li>Modern tools without unnecessary complexity</li>
+                    <li>Calgary and Alberta business context</li>
+                </ul>
             </div>
 
             <div className="skills-contain">
-                <h3>Here are some things I excel at:</h3>
-                <ul className="skills">
-                    <li className="skill">JavaScript</li>
-                    <li className="skill">TypeScript</li>
-                    <li className="skill">HTML</li>
-                    <li className="skill">CSS</li>
-                    <li className="skill">MERN Stack</li>
-                    <li className="skill">MondoDB</li>
-                    <li className="skill">Express</li>
-                    <li className="skill">ReactJS</li>
-                    <li className="skill">Node.js</li>
-                    <li className="skill">Python</li>
-                    <li className="skill">Django</li>
-                    <li className="skill">SQL</li>
-                    <li className="skill">PostgreSQL</li>
-                    <li className="skill">Git/GitHub</li>
-                    <li className="skill">RESTful APIs</li>
-                    <li className="skill">DevOps</li>
-                    <li className="skill">Linux</li>
-                    <li className="skill">C#</li>
-                    <li className="skill">ASP.NET</li>
-                </ul>
+                <h3 id="skills">Full-Stack Skills</h3>
+                <div className="skills-columns">
+                    {skillGroups.map((group) => (
+                        <article key={group.title} className="skills-column">
+                            <h4>{group.title}</h4>
+                            <ul>
+                                {group.items.map((item) => (
+                                    <li key={item}>{item}</li>
+                                ))}
+                            </ul>
+                        </article>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 }

@@ -4,10 +4,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import "./Footer.css";
 
 export default function Footer() {
+    const year = new Date().getFullYear();
+
     return (
         <footer className="Footer">
             <h3 className="footer-text">
-                &copy; 2025 Designed & Developed by Riley Gramlich
+                &copy; {year} Gramlich Software Services
             </h3>
             <ul className="socials">
                 <li className="nav-item ">

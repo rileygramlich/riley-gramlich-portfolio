@@ -1,11 +1,28 @@
 .Footer {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    padding: 2rem 0 2.5rem;
 }
 
 .footer-text {
-    font-size: 20px;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-2);
+}
+
+.Footer .socials {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.55rem;
+}
+
+.Footer .nav-link {
+    color: var(--ink-2);
+    text-decoration: none;
 }

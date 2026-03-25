@@ -1,92 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-                <a className="navbar-brand" href="#">
-                    RG
-                </a>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarText"
-                    aria-controls="navbarText"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
+        <nav className="navbar">
+            <a className="navbar-brand" href="#home" onClick={closeMenu}>
+                Gramlich Software Services
+            </a>
+            <button
+                className={`hamburger ${isMenuOpen ? "active" : ""}`}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div className={`nav-wrapper ${isMenuOpen ? "open" : ""}`}>
+                <ul className="navbar-links">
+                    <li>
+                        <a className="nav-link" href="#services" onClick={closeMenu}>
+                            Services
+                        </a>
+                    </li>
+                    <li>
+                        <a className="nav-link" href="#clients" onClick={closeMenu}>
+                            Clients
+                        </a>
+                    </li>
+                    <li>
+                        <a className="nav-link" href="#projects" onClick={closeMenu}>
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a className="nav-link" href="#about" onClick={closeMenu}>
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a className="nav-link" href="#skills" onClick={closeMenu}>
+                            Skills
+                        </a>
+                    </li>
+                    <li>
+                        <a className="nav-link" href="#contact" onClick={closeMenu}>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+                <a
+                    className="nav-cta"
+                    href="/pdfs/riley-gramlich-resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={closeMenu}
                 >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarText">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#projects">
-                                Projects{" "}
-                                <span className="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#about">
-                                About
-                            </a>
-                        </li>
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#contact">
-                                Contact
-                            </a>
-                        </li>
-                        <li className="nav-item active resume">
-                            <a
-                                className="nav-link"
-                                id="resume"
-                                href="./pdfs/riley-gramlich-resume.pdf"
-                                rel="noopener noreferrer"
-                            >
-                                Resume
-                            </a>
-                        </li>
-                    </ul>
-                    <span className="navbar-text socials">
-                        <ul className="navbar-nav mr-auto socials">
-                            <li className="nav-item ">
-                                <a
-                                    className="nav-link"
-                                    href="https://github.com/rileygramlich"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <FaGithub />
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a
-                                    className="nav-link"
-                                    href="https://www.linkedin.com/in/rileygramlich/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <FaLinkedin />
-                                    <i className="fa-regular fa-house"></i>
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a
-                                    className="nav-link"
-                                    href="https://x.com/rileygramlich"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <FaXTwitter />
-                                </a>
-                            </li>
-                        </ul>
-                    </span>
-                </div>
-            </nav>
-        </>
+                    Resume
+                </a>
+            </div>
+        </nav>
     );
 }
