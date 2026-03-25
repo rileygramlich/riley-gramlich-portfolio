@@ -15,14 +15,14 @@ jobs:
             - name: Checkout 🛎️
               uses: actions/checkout@v4
 
-            # If you use React/Vue/Sass, add your build steps here:
-            # - name: Install and Build 🔧
-            #   run: |
-            #     npm install
-            #     npm run build
+              # If you use React/Vue/Sass, add your build steps here:
+              # - name: Install and Build 🔧
+              run: |
+                  npm install
+                  npm run build
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4
               with:
-                  folder: build # Use 'dist' or 'build' if you have a build step
+                  folder: ./build # Use 'dist' or 'build' if you have a build step
                   branch: gh-pages # The branch the action should deploy to
