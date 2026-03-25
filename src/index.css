@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+    --font-main: "Manrope", "Segoe UI", sans-serif;
+    --font-accent: "Space Grotesk", "Segoe UI", sans-serif;
+    --ink-0: #10223d;
+    --ink-1: #1d3557;
+    --ink-2: #4b5f7d;
+    --surface-0: #ffffff;
+    --surface-1: #f3f8ff;
+    --brand-0: #1f4f94;
+    --brand-1: #2e6ac2;
+    --brand-2: #d9e7fb;
+    --stroke: #d6e3f7;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 8px 30px rgba(12, 44, 88, 0.07);
+    --shadow-md: 0 16px 44px rgba(12, 44, 88, 0.12);
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--ink-1);
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            #eef5ff 0%,
+            rgba(238, 245, 255, 0) 45%
+        ),
+        radial-gradient(
+            circle at 95% 0%,
+            #e4efff 0%,
+            rgba(228, 239, 255, 0) 35%
+        ),
+        linear-gradient(180deg, #f9fbff 0%, #f4f8ff 40%, #eff4fc 100%);
+}
+
+code {
+    font-family: "Courier New", Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    color: var(--ink-0);
+}
+
+p {
+    line-height: 1.65;
+}
+
+a {
+    color: inherit;
+}

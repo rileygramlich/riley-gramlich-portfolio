@@ -1,0 +1,141 @@
+.about-top {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+    align-items: center;
+    font-size: 1.07rem;
+}
+
+.about-bio {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-photo-panel {
+    margin: 0;
+    flex: 0 0 auto;
+    margin-bottom: 0.75rem;
+}
+
+.about-photo {
+    width: clamp(150px, 20vw, 220px);
+    aspect-ratio: 1 / 1;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 32%;
+    border: 1px solid #d7e5fb;
+    box-shadow: var(--shadow-md);
+}
+
+.About h3 {
+    font-weight: bold;
+    color: var(--ink-0);
+}
+
+.about-me {
+    margin: 0;
+    color: var(--ink-2);
+    line-height: 1.7;
+}
+
+.about-me-secondary {
+    margin-top: 1rem;
+}
+
+.capability-list {
+    padding: 1.1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--stroke);
+    background: var(--surface-0);
+    box-shadow: var(--shadow-sm);
+}
+
+.capability-list ul {
+    margin: 0.7rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--ink-2);
+    display: grid;
+    gap: 0.45rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .about-top {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-photo-panel {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .title {
+        font-size: 2rem;
+    }
+    .About h3 {
+        font-size: 1.2rem;
+    }
+    .skills {
+        font-size: 1rem;
+    }
+    .About p {
+        font-size: 1rem;
+    }
+    .about-top {
+        display: flex;
+        flex-direction: column;
+    }
+    .About {
+        height: fit-content;
+    }
+}
+
+.skills-contain {
+    margin-top: 1.8rem;
+}
+
+.skills-contain h3[id="skills"] {
+    scroll-margin-top: 7.2rem;
+}
+
+.skills-columns {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.skills-column {
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-lg);
+    background: var(--surface-0);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.skills-column h4 {
+    margin: 0;
+    color: var(--ink-0);
+    font-size: 1rem;
+}
+
+.skills-column ul {
+    margin: 0.7rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--ink-2);
+}
+
+.skills-column li {
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 900px) {
+    .skills-columns {
+        grid-template-columns: 1fr;
+    }
+}
