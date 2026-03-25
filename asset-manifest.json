@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.6ea4c727.css",
-    "main.js": "/static/js/main.8889d65c.js",
+    "main.css": "/static/css/main.a41a2c16.css",
+    "main.js": "/static/js/main.13b1048a.js",
+    "static/media/UrbanTec-1.png": "/static/media/UrbanTec-1.087b15c5cd16922976fe.png",
     "static/media/headshot.jpg": "/static/media/headshot.4847f19953c820f1a933.jpg",
+    "static/media/prairie-1.png": "/static/media/prairie-1.681f1b065b179250533a.png",
+    "static/media/Block-Time-1.png": "/static/media/Block-Time-1.3443d10f0373fc29b818.png",
     "index.html": "/index.html",
-    "main.6ea4c727.css.map": "/static/css/main.6ea4c727.css.map",
-    "main.8889d65c.js.map": "/static/js/main.8889d65c.js.map"
+    "main.a41a2c16.css.map": "/static/css/main.a41a2c16.css.map",
+    "main.13b1048a.js.map": "/static/js/main.13b1048a.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ea4c727.css",
-    "static/js/main.8889d65c.js"
+    "static/css/main.a41a2c16.css",
+    "static/js/main.13b1048a.js"
   ]
 }
