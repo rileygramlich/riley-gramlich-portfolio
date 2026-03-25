@@ -57,8 +57,13 @@
 }
 
 .contact-submit:hover,
-.contact-submit:focus-visible {
-    filter: brightness(1.05);
+.contact-submit:focus-visible,
+.contact-submit:active {
+    color: #fff;
+    background: linear-gradient(120deg, var(--brand-0), var(--brand-1));
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
     outline: none;
 }
 

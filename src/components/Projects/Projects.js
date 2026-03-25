@@ -1,18 +1,19 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Projects.css";
+import blockTimeImage from "../../imgs/Block-Time-1.png";
 
 const projects = [
     {
         name: "BlockTime",
-        featured: true,
-        image: null,
+        featured: false,
+        image: blockTimeImage,
         problem:
-            "Teams were losing time to fragmented scheduling and unclear availability.",
+            "Students were struggling to balance assignments, deadlines, and study sessions across multiple classes.",
         solution:
-            "Built a centralized planning experience that makes shift planning and resource visibility faster.",
-        impact: "Reduced planning friction and improved scheduling clarity for day-to-day operations.",
-        liveUrl: "#",
-        githubUrl: "#",
+            "Built as a group project, we created a scheduling and workload planner that helps students organize tasks, prioritize coursework, and plan their week clearly.",
+        impact: "Improved day-to-day time management for students by turning scattered school tasks into one clear, easy-to-follow planning flow.",
+        liveUrl: "https://rileygramlich.github.io/BlockTime/",
+        githubUrl: "https://github.com/rileygramlich/BlockTime",
     },
     {
         name: "Scribist",
@@ -61,51 +62,64 @@ export default function Projects() {
                 workflows, and practical business impact.
             </p>
             <div className="project-container">
-                {projects.map((project) => (
-                    <article
-                        key={project.name}
-                        className={`project-details ${project.featured ? "project-featured" : ""}`}
-                    >
-                        {project.image && (
-                            <img
-                                src={project.image}
-                                alt={`${project.name} app screenshot`}
-                                className="project-media"
-                            />
-                        )}
-                        <div className="details">
-                            <p className="project-label">Case Study</p>
-                            <h3 className="project-name">{project.name}</h3>
-                            <p className="project-description">
-                                <strong>Problem:</strong> {project.problem}
-                            </p>
-                            <p className="project-description">
-                                <strong>Solution:</strong> {project.solution}
-                            </p>
-                            <p className="project-description">
-                                <strong>Impact:</strong> {project.impact}
-                            </p>
-                            <div className="project-links">
-                                <a
-                                    href={project.liveUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="project-link primary"
-                                >
-                                    Live
-                                </a>
-                                <a
-                                    href={project.githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="project-link"
-                                >
-                                    GitHub
-                                </a>
+                {projects.map((project) => {
+                    const hasLiveLink = Boolean(project.liveUrl);
+                    const hasGithubLink = Boolean(project.githubUrl);
+                    const hasLinks = hasLiveLink || hasGithubLink;
+
+                    return (
+                        <article
+                            key={project.name}
+                            className={`project-details ${project.featured ? "project-featured" : ""}`}
+                        >
+                            {project.image && (
+                                <img
+                                    src={project.image}
+                                    alt={`${project.name} app screenshot`}
+                                    className="project-media"
+                                />
+                            )}
+                            <div className="details">
+                                <p className="project-label">Case Study</p>
+                                <h3 className="project-name">{project.name}</h3>
+                                <p className="project-description">
+                                    <strong>Problem:</strong> {project.problem}
+                                </p>
+                                <p className="project-description">
+                                    <strong>Solution:</strong>{" "}
+                                    {project.solution}
+                                </p>
+                                <p className="project-description">
+                                    <strong>Impact:</strong> {project.impact}
+                                </p>
+                                {hasLinks && (
+                                    <div className="project-links">
+                                        {hasLiveLink && (
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="project-link primary"
+                                            >
+                                                Live
+                                            </a>
+                                        )}
+                                        {hasGithubLink && (
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="project-link"
+                                            >
+                                                GitHub
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                             </div>
-                        </div>
-                    </article>
-                ))}
+                        </article>
+                    );
+                })}
             </div>
         </section>
     );

@@ -9,20 +9,20 @@ const clientWork = [
         image: urbanTecImage,
         website: "https://urbantec.ca",
         challenge:
-            "Needed clearer operations workflows and modern tooling to reduce coordination overhead.",
+            "The marketing team needed a modern website experience with a clearer conversion flow and faster page delivery.",
         solution:
-            "Delivered contracting support focused on process improvements and modernization planning.",
-        impact: "Impact metric placeholder: add measurable improvement once finalized.",
+            "Partnered directly with marketing stakeholders to redesign content structure, simplify user journeys, and implement a modern, performance-first front-end.",
+        impact: "Launched a cleaner, marketing-aligned website flow with high-speed page loads that improved usability and campaign readiness.",
     },
     {
         name: "Prairie.edu",
         image: prairieImage,
         website: "https://prairie.edu",
         challenge:
-            "Required scalable digital delivery support while keeping workflows simple for non-technical teams.",
+            "Marketing and communications teams needed a refreshed website flow that felt modern and performed quickly across devices.",
         solution:
-            "Implemented practical systems and web improvements aligned with day-to-day staff operations.",
-        impact: "Impact metric placeholder: add measurable improvement once finalized.",
+            "Delivered contracting support to align design and page architecture with marketing goals, while optimizing assets and templates for speed.",
+        impact: "Produced a modernized web experience with stronger flow, faster load times, and easier campaign execution for internal teams.",
     },
 ];
 

@@ -16,6 +16,23 @@
     gap: 1rem;
 }
 
+.Projects.show .project-details {
+    opacity: 0;
+    animation: enter-up 0.55s ease-out forwards;
+}
+
+.Projects.show .project-details:nth-child(1) {
+    animation-delay: 0.12s;
+}
+
+.Projects.show .project-details:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.Projects.show .project-details:nth-child(3) {
+    animation-delay: 0.28s;
+}
+
 .project-featured {
     grid-column: 1 / -1;
     background: linear-gradient(145deg, #f7fbff, #ecf4ff);
