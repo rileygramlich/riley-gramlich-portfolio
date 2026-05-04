@@ -56,26 +56,24 @@
 }
 
 .hero-cta {
-    background: linear-gradient(120deg, var(--brand-0), var(--brand-1));
-    color: #fff;
+    background: var(--brand-0);
+    border: 1px solid transparent;
+    color: var(--button-text);
     box-shadow: var(--shadow-sm);
 }
 
 .hero-cta:hover,
 .hero-cta:focus-visible,
 .hero-cta:active {
-    color: #fff;
-    background: linear-gradient(120deg, var(--brand-0), var(--brand-1));
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    color: var(--button-text);
+    background: var(--brand-1);
     outline: none;
 }
 
 .hero-secondary-cta {
-    background: var(--surface-0);
+    background: transparent;
     border: 1px solid var(--stroke);
-    color: var(--ink-1);
+    color: var(--ink-2);
 }
 
 .Home.show .intro-content > * {

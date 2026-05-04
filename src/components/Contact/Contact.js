@@ -43,10 +43,10 @@ export default function Contact() {
 
     return (
         <section ref={targetRef} className={className} id="contact">
-            <h1 className="title">Start a Project Conversation</h1>
+            <h1 className="title">Say Hello</h1>
             <p className="contact-subtitle">
-                Tell me what your team is trying to improve, and I will follow
-                up with a practical next step.
+                If you want to chat about a project, collaboration, or ideas
+                worth testing, send a note.
             </p>
             <form ref={form} onSubmit={sendEmail} className="contact-form">
                 <label htmlFor="name">Name</label>
@@ -67,7 +67,7 @@ export default function Contact() {
                     required
                 />
 
-                <label htmlFor="company">Company (optional)</label>
+                <label htmlFor="company">Context (optional)</label>
                 <input
                     id="company"
                     type="text"
@@ -85,7 +85,7 @@ export default function Contact() {
                 />
 
                 <button type="submit" className="contact-submit">
-                    Contact Us
+                    Send message
                 </button>
                 {status && <p className="contact-status">{status}</p>}
             </form>

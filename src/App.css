@@ -14,11 +14,11 @@
 }
 
 .main-pages > .Home,
-.Services,
-.Clients,
-.Projects,
-.About,
-.Contact {
+.main-pages > .Services,
+.main-pages > .Projects,
+.main-pages > .About,
+.main-pages > .Clients,
+.main-pages > .Contact {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,14 +43,38 @@
 
 @media only screen and (max-width: 600px) {
     .main-pages > .Home,
-    .Services,
-    .Clients,
-    .Projects,
-    .About,
-    .Contact {
+    .main-pages > .Services,
+    .main-pages > .Projects,
+    .main-pages > .About,
+    .main-pages > .Clients,
+    .main-pages > .Contact {
         min-height: auto;
         padding: 3rem 0;
     }
+}
+
+.theme-toggle {
+    position: fixed;
+    bottom: 1.75rem;
+    left: 1.75rem;
+    z-index: 1200;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    background: var(--brand-0);
+    color: var(--button-text);
+    font-family: var(--font-main);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    transform: translateY(-2px);
+    background: var(--brand-1);
+    outline: none;
 }
 
 /* ANIMATIONS */

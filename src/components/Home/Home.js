@@ -20,35 +20,28 @@ export default function Home() {
     return (
         <section ref={targetRef} className={className} id="home">
             <div className="intro-content">
-                <p className="eyebrow">
-                    Serving Calgary and Alberta businesses
-                </p>
-                <h1 className="name">
-                    Modern software systems that save your team hours every
-                    week.
-                </h1>
+                <p className="eyebrow">Software Developer</p>
+                <h1 className="name">Riley Gramlich</h1>
                 <h3 className="one-liner">
-                    Gramlich Software Services helps local organizations
-                    streamline operations, modernize outdated tools, and launch
-                    websites that convert.
+                    I build web apps, automation systems, and useful tools.
                 </h3>
                 <p className="description">
-                    From WordPress and Elementor websites to automation
-                    workflows and legacy system modernization, every project is
-                    built for measurable business outcomes.
+                    I like turning messy processes into simple workflows and
+                    experimenting with the systems that make software feel
+                    effortless to use.
                 </p>
                 <div className="hero-cta-group">
-                    <a className="hero-cta" href="#contact">
-                        Contact Us
+                    <a className="hero-cta" href="#projects">
+                        View projects
                     </a>
-                    <a className="hero-secondary-cta" href="#clients">
-                        See Client Work
+                    <a className="hero-secondary-cta" href="#writing">
+                        Read notes
                     </a>
                 </div>
                 <ul className="hero-points">
-                    <li>Faster admin workflows</li>
-                    <li>Lower ongoing maintenance cost</li>
-                    <li>Clear communication for non-technical teams</li>
+                    <li>Automation-first workflows</li>
+                    <li>Full-stack prototyping</li>
+                    <li>Linux and Docker experiments</li>
                 </ul>
             </div>
         </section>

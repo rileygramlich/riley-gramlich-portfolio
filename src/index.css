@@ -3,19 +3,58 @@
 :root {
     --font-main: "Manrope", "Segoe UI", sans-serif;
     --font-accent: "Space Grotesk", "Segoe UI", sans-serif;
-    --ink-0: #10223d;
-    --ink-1: #1d3557;
-    --ink-2: #4b5f7d;
-    --surface-0: #ffffff;
-    --surface-1: #f3f8ff;
-    --brand-0: #1f4f94;
-    --brand-1: #2e6ac2;
-    --brand-2: #d9e7fb;
-    --stroke: #d6e3f7;
+    --ink-0: #f1f5f9;
+    --ink-1: #e2e8f0;
+    --ink-2: #cbd5e1;
+    --page-bg: #0a0c10;
+    --surface-0: #151922;
+    --surface-1: #1e242e;
+    --brand-0: #7dc4ff;
+    --brand-1: #a7d7ff;
+    --brand-2: #2c323d;
+    --stroke: #3a404b;
+    --button-text: #0a0c10;
     --radius-lg: 18px;
     --radius-pill: 999px;
-    --shadow-sm: 0 8px 30px rgba(12, 44, 88, 0.07);
-    --shadow-md: 0 16px 44px rgba(12, 44, 88, 0.12);
+    --shadow-sm: 0 12px 26px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 22px 48px rgba(0, 0, 0, 0.45);
+    --bg-1: radial-gradient(
+        circle at 0% 0%,
+        rgba(203, 213, 225, 0.12) 0%,
+        rgba(203, 213, 225, 0) 45%
+    );
+    --bg-2: radial-gradient(
+        circle at 100% 0%,
+        rgba(203, 213, 225, 0.08) 0%,
+        rgba(203, 213, 225, 0) 40%
+    );
+    --bg-3: linear-gradient(180deg, #0a0c10 0%, #090b10 60%, #06080b 100%);
+    color-scheme: dark;
+}
+
+[data-theme="light"] {
+    --ink-0: #111827;
+    --ink-1: #1f2937;
+    --ink-2: #374151;
+    --page-bg: #eef1f5;
+    --surface-0: #ffffff;
+    --surface-1: #f7f8fb;
+    --brand-0: #60a5fa;
+    --brand-1: #93c5fd;
+    --brand-2: #e5e7eb;
+    --stroke: #d4d8e1;
+    --bg-1: radial-gradient(
+        circle at 0% 0%,
+        rgba(148, 163, 184, 0.2) 0%,
+        rgba(148, 163, 184, 0) 50%
+    );
+    --bg-2: radial-gradient(
+        circle at 100% 0%,
+        rgba(148, 163, 184, 0.18) 0%,
+        rgba(148, 163, 184, 0) 45%
+    );
+    --bg-3: linear-gradient(180deg, #f8fafc 0%, #eff2f6 55%, #e9edf3 100%);
+    color-scheme: light;
 }
 
 body {
@@ -24,18 +63,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--ink-1);
-    background:
-        radial-gradient(
-            circle at 0% 0%,
-            #eef5ff 0%,
-            rgba(238, 245, 255, 0) 45%
-        ),
-        radial-gradient(
-            circle at 95% 0%,
-            #e4efff 0%,
-            rgba(228, 239, 255, 0) 35%
-        ),
-        linear-gradient(180deg, #f9fbff 0%, #f4f8ff 40%, #eff4fc 100%);
+    background-color: var(--page-bg);
+    background-image: var(--bg-1), var(--bg-2), var(--bg-3);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {

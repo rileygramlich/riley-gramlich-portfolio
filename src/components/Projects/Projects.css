@@ -35,7 +35,11 @@
 
 .project-featured {
     grid-column: 1 / -1;
-    background: linear-gradient(145deg, #f7fbff, #ecf4ff);
+    background: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--surface-0) 85%, var(--brand-2) 15%),
+        var(--surface-0)
+    );
 }
 
 .project-media {
@@ -43,7 +47,8 @@
     height: 220px;
     object-fit: cover;
     border-radius: 14px;
-    border: 1px solid #d7e5fb;
+    border: 1px solid var(--stroke);
+    background: var(--surface-1);
 }
 
 .project-label {
@@ -86,8 +91,8 @@
 }
 
 .project-link.primary {
-    background: var(--ink-0);
-    color: #fff;
+    background: var(--brand-0);
+    color: var(--button-text);
     border-color: transparent;
 }
 
