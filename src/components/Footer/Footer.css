@@ -14,6 +14,24 @@
     color: var(--ink-2);
 }
 
+.footer-consulting {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+}
+
+.footer-consulting a {
+    color: var(--ink-1);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.footer-consulting a:hover,
+.footer-consulting a:focus-visible {
+    border-bottom-color: var(--ink-1);
+    outline: none;
+}
+
 .Footer .socials {
     margin: 0;
     padding: 0;

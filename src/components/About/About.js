@@ -19,45 +19,6 @@ export default function About() {
 
     const className = "About hidden " + (isVisible ? "show" : "");
 
-    const skillGroups = [
-        {
-            title: "Frontend",
-            items: [
-                "React and JavaScript",
-                "TypeScript",
-                "Responsive UI architecture",
-                "Component libraries and design systems",
-            ],
-        },
-        {
-            title: "Backend",
-            items: [
-                "Node.js and Express APIs",
-                "Python automation services",
-                "Authentication and role-based access",
-                "Third-party integrations",
-            ],
-        },
-        {
-            title: "Data and Cloud",
-            items: [
-                "SQL and PostgreSQL",
-                "REST data modeling",
-                "Deployment and environment configuration",
-                "Monitoring and operational support",
-            ],
-        },
-        {
-            title: "Delivery",
-            items: [
-                "Discovery and technical scoping",
-                "Workflow automation with AI tooling",
-                "Legacy system modernization",
-                "Ongoing consulting and iteration",
-            ],
-        },
-    ];
-
     return (
         <section ref={targetRef} className={className} id="about">
             <h1 className="title">About Me</h1>
@@ -65,16 +26,14 @@ export default function About() {
                 <div className="about-bio">
                     <p className="about-me">
                         I am Riley Gramlich, a Calgary-based software developer
-                        focused on practical solutions for small and mid-sized
-                        teams. My work blends product thinking with hands-on
-                        engineering so projects ship quickly and stay
-                        maintainable.
+                        who likes building systems that are simple, reliable,
+                        and easy to evolve. I care about thoughtful interfaces,
+                        clear data flow, and workflows that remove friction.
                     </p>
                     <p className="about-me about-me-secondary">
-                        Whether the engagement is a new website, internal tool,
-                        or process automation initiative, the goal is the same:
-                        reduce friction, improve reliability, and give your team
-                        systems they can confidently operate.
+                        I am happiest when I am debugging a tricky edge case,
+                        tightening up a workflow, or turning a messy process
+                        into a tool that feels obvious to use.
                     </p>
                 </div>
 
@@ -88,30 +47,25 @@ export default function About() {
             </div>
 
             <div className="capability-list">
-                <h3>What clients value most</h3>
+                <h3>How I work</h3>
                 <ul>
-                    <li>Clear timelines and straightforward communication</li>
-                    <li>Solutions that fit real team workflows</li>
-                    <li>Full-stack delivery from UI through backend</li>
-                    <li>Modern tools without unnecessary complexity</li>
-                    <li>Calgary and Alberta business context</li>
+                    <li>Start with the workflow and map the data first</li>
+                    <li>Prefer small, composable systems over large rewrites</li>
+                    <li>Automate the annoying parts before adding features</li>
+                    <li>Write code that is easy to revisit months later</li>
+                    <li>Ship in small steps and learn from real usage</li>
                 </ul>
             </div>
 
-            <div className="skills-contain">
-                <h3 id="skills">Full-Stack Skills</h3>
-                <div className="skills-columns">
-                    {skillGroups.map((group) => (
-                        <article key={group.title} className="skills-column">
-                            <h4>{group.title}</h4>
-                            <ul>
-                                {group.items.map((item) => (
-                                    <li key={item}>{item}</li>
-                                ))}
-                            </ul>
-                        </article>
-                    ))}
-                </div>
+            <div className="about-cta-group">
+                <a
+                    className="about-cta"
+                    href="https://services.rileygramlich.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Work with me
+                </a>
             </div>
         </section>
     );

@@ -3,28 +3,40 @@ import "./Services.css";
 
 const services = [
     {
-        title: "Web Development",
-        subtitle: "Full-stack web development",
+        title: "OpenClaw",
+        subtitle: "AI + automation lab",
         description:
-            "Design and build production-ready web platforms across frontend, backend APIs, and data layers, with WordPress/Elementor available when they are the right fit.",
+            "Exploring practical workflows that connect LLMs with real tasks, not just chat interfaces.",
     },
     {
-        title: "Automation and AI Workflows",
-        subtitle: "Reduce repetitive admin work",
+        title: "n8n automations",
+        subtitle: "Low-friction integrations",
         description:
-            "Connect your tools and automate repeatable tasks so your team spends less time on manual processes and more time on high-value work.",
+            "Building repeatable automations that move data between tools and keep small systems in sync.",
     },
     {
-        title: "Systems Modernization",
-        subtitle: "Upgrade aging software",
+        title: "AI-assisted workflows",
+        subtitle: "Human-in-the-loop systems",
         description:
-            "Replace fragile legacy workflows with stable, maintainable systems that scale with your operations.",
+            "Testing where AI can speed up research, drafting, and ops without losing control of the outcome.",
     },
     {
-        title: "Consulting and Contracting",
-        subtitle: "Reliable delivery support",
+        title: "Linux + Docker experiments",
+        subtitle: "Server-side tinkering",
         description:
-            "Bring in focused technical leadership for scoped projects, process improvements, or ongoing product support.",
+            "Running personal services, containers, and small deployments to stay sharp on infra basics.",
+    },
+    {
+        title: "Web apps + internal tools",
+        subtitle: "UI + backend delivery",
+        description:
+            "Shipping small web apps that are fast to maintain and focused on a single job.",
+    },
+    {
+        title: "Client work (learning-focused)",
+        subtitle: "Real-world systems",
+        description:
+            "Working on scoped projects when they teach me something about reliability, deployment, or UX.",
     },
 ];
 
@@ -46,10 +58,9 @@ export default function Services() {
 
     return (
         <section ref={targetRef} className={className} id="services">
-            <h1 className="title">Services</h1>
+            <h1 className="title">What I'm Working On</h1>
             <p className="section-subtitle">
-                Practical consulting and implementation support for small and
-                mid-sized businesses across Calgary and Alberta.
+                Active projects, experiments, and systems I am building or testing right now.
             </p>
             <div className="service-grid">
                 {services.map((service) => (

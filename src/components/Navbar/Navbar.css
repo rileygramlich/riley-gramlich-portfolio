@@ -11,13 +11,17 @@
     gap: 1rem;
     border-radius: var(--radius-pill);
     border: 1px solid var(--stroke);
-    background: rgba(255, 255, 255, 0.88);
+    background: var(--surface-1);
+    background: color-mix(in srgb, var(--surface-1) 96%, transparent);
     backdrop-filter: blur(8px);
     box-shadow: var(--shadow-sm);
     animation: nav-drop 0.5s ease-out;
 }
 
 .navbar-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
     text-decoration: none;
     color: var(--ink-0);
     font-family: var(--font-accent);
@@ -25,6 +29,18 @@
     letter-spacing: 0.02em;
     font-weight: 700;
     white-space: nowrap;
+}
+
+.brand-name {
+    font-size: 0.98rem;
+}
+
+.brand-role {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .hamburger {
@@ -85,7 +101,7 @@
 
 .nav-link:hover,
 .nav-link:focus-visible {
-    color: var(--brand-1);
+    color: var(--ink-0);
     background: var(--surface-1);
     outline: none;
 }
@@ -93,8 +109,9 @@
 .nav-cta {
     text-decoration: none;
     border-radius: var(--radius-pill);
-    background: linear-gradient(120deg, var(--brand-0), var(--brand-1));
-    color: #fff;
+    border: 1px solid transparent;
+    background: var(--brand-0);
+    color: var(--button-text);
     font-weight: 700;
     padding: 0.65rem 1.1rem;
     white-space: nowrap;
@@ -104,11 +121,9 @@
 .nav-cta:hover,
 .nav-cta:focus-visible,
 .nav-cta:active {
-    color: #fff;
-    background: linear-gradient(120deg, var(--brand-0), var(--brand-1));
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    color: var(--button-text);
+    background: var(--brand-1);
+    text-decoration: none;
     outline: none;
 }
 

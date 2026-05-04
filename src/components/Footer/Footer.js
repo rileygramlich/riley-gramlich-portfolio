@@ -9,8 +9,19 @@ export default function Footer() {
     return (
         <footer className="Footer">
             <h3 className="footer-text">
-                &copy; {year} Gramlich Software Services
+                &copy; {year} Riley Gramlich
             </h3>
+            <p className="footer-consulting">
+                For consulting and business software work, visit{" "}
+                <a
+                    href="https://services.rileygramlich.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Gramlich Software Services
+                </a>
+                .
+            </p>
             <ul className="socials">
                 <li className="nav-item ">
                     <a

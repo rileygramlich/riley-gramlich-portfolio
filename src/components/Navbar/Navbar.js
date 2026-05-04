@@ -9,7 +9,8 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <a className="navbar-brand" href="#home" onClick={closeMenu}>
-                Gramlich Software Services
+                <span className="brand-name">Riley Gramlich</span>
+                <span className="brand-role">Software Developer</span>
             </a>
             <button
                 className={`hamburger ${isMenuOpen ? "active" : ""}`}
@@ -24,12 +25,7 @@ export default function Navbar() {
                 <ul className="navbar-links">
                     <li>
                         <a className="nav-link" href="#services" onClick={closeMenu}>
-                            Services
-                        </a>
-                    </li>
-                    <li>
-                        <a className="nav-link" href="#clients" onClick={closeMenu}>
-                            Clients
+                            Working On
                         </a>
                     </li>
                     <li>
@@ -43,8 +39,8 @@ export default function Navbar() {
                         </a>
                     </li>
                     <li>
-                        <a className="nav-link" href="#skills" onClick={closeMenu}>
-                            Skills
+                        <a className="nav-link" href="#stack" onClick={closeMenu}>
+                            Tech Stack
                         </a>
                     </li>
                     <li>
