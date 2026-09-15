@@ -771,17 +771,28 @@ section {
 /* ============================================================= responsive === */
 
 @media (max-width: 1040px) {
+    /* Opaque, not glass. This was rgba(8,8,10,0.92) over a backdrop blur, and
+       on a phone the hero headline read straight through the menu — both the
+       links and the headline became hard to read at once.
+
+       The compositing here is not as simple as the alpha suggests: .nav sets
+       `backdrop-filter`, which makes it the containing block *and* a stacking
+       context for this fixed child, so the sheet does not layer over the page
+       the way an unqualified `position: fixed` would. A full-screen menu gains
+       nothing from translucency anyway — it exists to replace the page, not to
+       hint at it — so it gets a solid ground and an explicit z-index rather
+       than an inherited one. */
     .nav-links {
         position: fixed;
         inset: var(--nav-h) 0 auto 0;
+        z-index: 950;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
         padding: 0.5rem 4vw 1.25rem;
-        background: rgba(8, 8, 10, 0.92);
-        backdrop-filter: blur(var(--blur));
-        -webkit-backdrop-filter: blur(var(--blur));
+        background: var(--n-900);
         border-bottom: 1px solid var(--line);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
         transform: translateY(-120%);
         transition: transform 0.42s var(--ease);
     }
@@ -820,6 +831,43 @@ section {
     .hero { min-height: auto; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* ============================================================ touch sizing ===
+   Anything tappable clears 44px on a coarse pointer. Measured on a phone
+   viewport before this existed: the project buttons came out at 34px, the
+   burger at 38 and the brand at 30 — all comfortably missable with a thumb.
+
+   Inline links inside prose (the #438 / #514 references in a project note, the
+   client-site links) are deliberately left alone. They are 16px because they
+   are words in a sentence, and padding them to 44px would wreck the paragraph
+   for no real gain — the convention is that inline text links are exempt.
+   ========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .btn { min-height: 46px; }
+
+    .btn-sm { min-height: 44px; }
+
+    .nav-cta { height: 44px; }
+
+    .brand { min-height: 44px; }
+
+    .burger { width: 44px; height: 44px; }
+
+    .socials a { width: 46px; height: 46px; }
+
+    /* The sheet links are padded rather than sized, so they grow with the row
+       instead of leaving a gap under the text. */
+    .nav-links a {
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+    }
+
+    .field input { min-height: 46px; }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

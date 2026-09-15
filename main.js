@@ -91,10 +91,29 @@
 
     var stack = Array.prototype.slice.call(document.querySelectorAll(".project"));
 
+    /* The stylesheet drops the cards back to `position: static` below 720px
+       wide or 620px tall, because stacking sheets taller than the viewport
+       traps content behind them. Matching that here matters for more than
+       tidiness: without it this would keep measuring six rects on every scroll
+       frame of a phone, to set a variable nothing is reading. */
+    var mqStacked = window.matchMedia("(max-width: 720px), (max-height: 620px)");
+
     if (stack.length > 1 && !reduced) {
         var ticking = false;
+        var wasFlat = false;
 
         var updateStack = function () {
+            if (mqStacked.matches) {
+                // Clear once on the way in, then do nothing until it changes.
+                if (!wasFlat) {
+                    stack.forEach(function (c) { c.style.setProperty("--overtake", "0"); });
+                    wasFlat = true;
+                }
+                ticking = false;
+                return;
+            }
+            wasFlat = false;
+
             for (var i = 0; i < stack.length; i++) {
                 var card = stack[i];
                 var next = stack[i + 1];
