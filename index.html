@@ -133,6 +133,32 @@
 
       <div class="projects">
 
+        <!-- The receptionist leads. It is the flagship: a live commercial
+             product rather than a build, and the audience here is mostly
+             prospective clients, who read the first card and skim the rest. -->
+        <article class="project reveal">
+          <div class="project-body">
+            <p class="project-label">Case study · live product</p>
+            <h3 class="project-name">AI receptionist for small businesses</h3>
+            <dl class="project-facts">
+              <dt>What it does</dt>
+              <dd>Answers a small business's phone and texts around the clock. It picks up on the first ring, asks the intake questions that trade actually needs, checks live calendar availability before offering a time so it cannot double-book, books the appointment mid-call, and texts a confirmation to the caller plus a summary to the owner.</dd>
+              <dt>Why it was built</dt>
+              <dd>A missed call is usually a missed customer, and a human receptionist in Calgary runs $2,800–$4,500 a month. This answers every call for a fraction of that, including evenings and weekends.</dd>
+              <dt>Tech stack</dt>
+              <dd>Node.js, Twilio ConversationRelay, WebSockets, Google Calendar API, Docker Compose, Caddy, SMS + WhatsApp</dd>
+              <dt>Technical decisions</dt>
+              <dd>Multi-tenant from the start, so onboarding a client is a config file and a restart rather than a rebuild. The site and the voice server are separate compose projects, so deploying the marketing site can never interrupt a live call.</dd>
+              <dt>What I learned</dt>
+              <dd>How much of a reliable phone agent is operational rather than conversational — deployment, tenancy, and never dropping a call matter more than the model.</dd>
+            </dl>
+            <div class="project-links">
+              <a class="btn btn-primary btn-sm" href="https://reception.rileygramlich.dev" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/GSS-assist" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
         <!-- God's Eye View — the open-source contribution. Framed precisely:
              PR #438 was superseded, not merged; the work landed in the
              maintainer's #514 with a Co-authored-by trailer. -->
@@ -281,29 +307,6 @@
             </dl>
             <div class="project-links">
               <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/glossa-galore" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-body">
-            <p class="project-label">Case study · live product</p>
-            <h3 class="project-name">AI receptionist for small businesses</h3>
-            <dl class="project-facts">
-              <dt>What it does</dt>
-              <dd>Answers a small business's phone and texts around the clock. It picks up on the first ring, asks the intake questions that trade actually needs, checks live calendar availability before offering a time so it cannot double-book, books the appointment mid-call, and texts a confirmation to the caller plus a summary to the owner.</dd>
-              <dt>Why it was built</dt>
-              <dd>A missed call is usually a missed customer, and a human receptionist in Calgary runs $2,800–$4,500 a month. This answers every call for a fraction of that, including evenings and weekends.</dd>
-              <dt>Tech stack</dt>
-              <dd>Node.js, Twilio ConversationRelay, WebSockets, Google Calendar API, Docker Compose, Caddy, SMS + WhatsApp</dd>
-              <dt>Technical decisions</dt>
-              <dd>Multi-tenant from the start, so onboarding a client is a config file and a restart rather than a rebuild. The site and the voice server are separate compose projects, so deploying the marketing site can never interrupt a live call.</dd>
-              <dt>What I learned</dt>
-              <dd>How much of a reliable phone agent is operational rather than conversational — deployment, tenancy, and never dropping a call matter more than the model.</dd>
-            </dl>
-            <div class="project-links">
-              <a class="btn btn-primary btn-sm" href="https://reception.rileygramlich.dev" target="_blank" rel="noopener noreferrer">Live</a>
-              <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/GSS-assist" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
         </article>
