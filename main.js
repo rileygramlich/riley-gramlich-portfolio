@@ -178,6 +178,74 @@
         sections.forEach(function (s) { spy.observe(s); });
     }
 
+    /* ------------------------------------------------------- lightbox --- */
+    /* Screenshots open full size on click. The images are NOT wrapped in a
+       button: .project-media is a grid item of .project, so wrapping it would
+       hand the track to the wrapper and the image would stop filling its
+       column. Making the image itself the control keeps the layout untouched. */
+
+    var shots = document.querySelectorAll(".project-media, .client-media");
+
+    if (shots.length) {
+        var box = document.createElement("div");
+        box.className = "lightbox";
+        box.hidden = true;
+        box.innerHTML =
+            '<button class="lightbox-close" type="button" aria-label="Close">&#10005;</button>' +
+            '<img class="lightbox-img" alt="">' +
+            '<p class="lightbox-cap"></p>';
+        document.body.appendChild(box);
+
+        var boxImg = box.querySelector(".lightbox-img");
+        var boxCap = box.querySelector(".lightbox-cap");
+        var boxClose = box.querySelector(".lightbox-close");
+        var opener = null;
+        var prevOverflow = "";
+
+        var openShot = function (img) {
+            opener = img;
+            boxImg.src = img.currentSrc || img.src;
+            boxImg.alt = img.alt;
+            boxCap.textContent = img.alt;
+            box.hidden = false;
+            prevOverflow = document.body.style.overflow;
+            document.body.style.overflow = "hidden";
+            boxClose.focus();
+        };
+
+        var closeShot = function () {
+            box.hidden = true;
+            boxImg.removeAttribute("src");
+            document.body.style.overflow = prevOverflow;
+            if (opener) { opener.focus(); opener = null; }
+        };
+
+        shots.forEach(function (img) {
+            img.tabIndex = 0;
+            img.setAttribute("role", "button");
+            img.setAttribute("aria-label", "Enlarge screenshot: " + (img.alt || "project"));
+            img.addEventListener("click", function () { openShot(img); });
+            img.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openShot(img); }
+            });
+        });
+
+        boxClose.addEventListener("click", closeShot);
+
+        // Clicking the backdrop closes; clicking the image itself does not.
+        box.addEventListener("click", function (e) {
+            if (e.target === box) closeShot();
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (box.hidden) return;
+            if (e.key === "Escape") { closeShot(); return; }
+            // Close is the only focusable thing in here, so keep Tab on it
+            // rather than letting focus wander back into the page behind.
+            if (e.key === "Tab") { e.preventDefault(); boxClose.focus(); }
+        });
+    }
+
     /* ----------------------------------------------------------- year --- */
 
     var year = document.getElementById("year");
