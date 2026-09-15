@@ -507,13 +507,22 @@ section {
     will-change: transform, opacity, filter;
 }
 
-/* the stepped offsets that make the stack legible as a stack */
-.project:nth-child(1) { top: calc(var(--stick) + 0px);  z-index: 1; }
-.project:nth-child(2) { top: calc(var(--stick) + 12px); z-index: 2; }
-.project:nth-child(3) { top: calc(var(--stick) + 24px); z-index: 3; }
-.project:nth-child(4) { top: calc(var(--stick) + 36px); z-index: 4; }
-.project:nth-child(5) { top: calc(var(--stick) + 48px); z-index: 5; }
-.project:nth-child(6) { top: calc(var(--stick) + 60px); z-index: 6; }
+/* The stepped offsets that make the stack legible as a stack.
+
+   --i is the card's index, written by main.js. This was six hardcoded
+   :nth-child rules, which is fine until a seventh card is added — then that
+   card and every one after it pins at the same offset and the stagger just
+   stops, with nothing to indicate why. Driving it off the index means the
+   stagger cannot drift from the number of cards on the page.
+
+   The 0 fallback matters: if the script never runs, every card still sticks
+   correctly, it just loses the stepped edge. The layout degrades, not breaks.
+   The step is 8px rather than 12 because ten cards at 12px would push the last
+   one 108px down the viewport. */
+.project {
+    top: calc(var(--stick) + var(--i, 0) * 8px);
+    z-index: calc(var(--i, 0) + 1);
+}
 
 /* the same lit top edge as the cards */
 .project::after {

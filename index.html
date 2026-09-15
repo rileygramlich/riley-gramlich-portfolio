@@ -285,6 +285,95 @@
           </div>
         </article>
 
+        <article class="project reveal">
+          <div class="project-body">
+            <p class="project-label">Case study · live product</p>
+            <h3 class="project-name">AI receptionist for small businesses</h3>
+            <dl class="project-facts">
+              <dt>What it does</dt>
+              <dd>Answers a small business's phone and texts around the clock. It picks up on the first ring, asks the intake questions that trade actually needs, checks live calendar availability before offering a time so it cannot double-book, books the appointment mid-call, and texts a confirmation to the caller plus a summary to the owner.</dd>
+              <dt>Why it was built</dt>
+              <dd>A missed call is usually a missed customer, and a human receptionist in Calgary runs $2,800–$4,500 a month. This answers every call for a fraction of that, including evenings and weekends.</dd>
+              <dt>Tech stack</dt>
+              <dd>Node.js, Twilio ConversationRelay, WebSockets, Google Calendar API, Docker Compose, Caddy, SMS + WhatsApp</dd>
+              <dt>Technical decisions</dt>
+              <dd>Multi-tenant from the start, so onboarding a client is a config file and a restart rather than a rebuild. The site and the voice server are separate compose projects, so deploying the marketing site can never interrupt a live call.</dd>
+              <dt>What I learned</dt>
+              <dd>How much of a reliable phone agent is operational rather than conversational — deployment, tenancy, and never dropping a call matter more than the model.</dd>
+            </dl>
+            <div class="project-links">
+              <a class="btn btn-primary btn-sm" href="https://reception.rileygramlich.dev" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/GSS-assist" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-body">
+            <p class="project-label">Case study</p>
+            <h3 class="project-name">Tommy Games — ten games in a browser</h3>
+            <dl class="project-facts">
+              <dt>What it does</dt>
+              <dd>A shelf of ten classic card and board games — Wizard, Quiddler, Euchre, Cribbage, Sequence, Backgammon, Coup, Mastermind, Reversi and Yahtzee — each playable solo against bots, pass-and-play on one device, or online with friends.</dd>
+              <dt>Why it was built</dt>
+              <dd>The games people actually play around a table are mostly missing from the browser, or buried under accounts and adverts.</dd>
+              <dt>Tech stack</dt>
+              <dd>Svelte, JavaScript, WebSockets, Node.js</dd>
+              <dt>Technical decisions</dt>
+              <dd>Phone-first throughout: no horizontal scrolling at 360px, boards sized in viewport units, 40px tap targets, and overlays that behave like native sheets. Rules engines, a solver and a full online game are covered by tests, because ten rule sets are ten chances to be subtly wrong.</dd>
+              <dt>What I learned</dt>
+              <dd>Encoding ten different rule sets cleanly enough that one shared engine can drive bots, local play and networked play without forking per game.</dd>
+            </dl>
+            <div class="project-links">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/tommy-games" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-body">
+            <p class="project-label">Case study · developer tool</p>
+            <h3 class="project-name">Vault Gate — Obsidian plugin for AI assistants</h3>
+            <dl class="project-facts">
+              <dt>What it does</dt>
+              <dd>Lets an AI assistant read, search and write notes in an Obsidian vault without anything leaving the machine. Ask it what you wrote last week, search every note for a topic, or have it save something back.</dd>
+              <dt>Why it was built</dt>
+              <dd>Connecting an assistant to a vault previously meant a terminal, a Node install and a vault path in a config file — enough friction that most people never did it.</dd>
+              <dt>Tech stack</dt>
+              <dd>TypeScript, Obsidian Plugin API, Model Context Protocol</dd>
+              <dt>Technical decisions</dt>
+              <dd>The server runs inside Obsidian itself, so setup is enabling a plugin and clicking Connect. Reading and search are on by default and writing is off, so the cautious setting is the one you get without choosing it.</dd>
+              <dt>What I learned</dt>
+              <dd>Designing permissions people will actually leave switched on — the default has to be the safe one, not the convenient one.</dd>
+            </dl>
+            <div class="project-links">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/obsidian-gate" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-body">
+            <p class="project-label">Case study</p>
+            <h3 class="project-name">Contraction Counter</h3>
+            <dl class="project-facts">
+              <dt>What it does</dt>
+              <dd>Times contractions during labour, recording each one's length and the gap since the last so the pattern is readable at a glance.</dd>
+              <dt>Why it was built</dt>
+              <dd>The moment you need this is the worst possible moment to be fighting an interface.</dd>
+              <dt>Tech stack</dt>
+              <dd>React, TypeScript, Vite, Tailwind CSS, Firebase</dd>
+              <dt>Technical decisions</dt>
+              <dd>Mobile-first and backed by Firebase, so a session survives a closed tab or a swap to a partner's phone rather than living only in local state.</dd>
+              <dt>What I learned</dt>
+              <dd>Designing for one-handed use under stress, where every extra tap is a real cost.</dd>
+            </dl>
+            <div class="project-links">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/rileygramlich/ContractionCounter" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -292,10 +381,14 @@
   <!-- ────────────────────────────────────────────────────── client work ── -->
   <section id="client-work">
     <div class="shell">
+      <!-- Headed neutrally on purpose. One of these two is an employer rather
+           than a client, so "Client work" and "contracting" were claims the
+           section could not support. What is true of both is that they are
+           organizations whose sites Riley builds. -->
       <header class="section-head reveal">
-        <p class="eyebrow">Contracting</p>
-        <h2 class="section-title">Client work</h2>
-        <p class="section-sub">Organizations I have delivered contracting and web work for.</p>
+        <p class="eyebrow">Beyond personal projects</p>
+        <h2 class="section-title">Work for organizations</h2>
+        <p class="section-sub">Websites and systems I build and maintain for teams in Calgary and Alberta.</p>
       </header>
 
       <div class="grid grid-2">
@@ -308,13 +401,16 @@
           <p><strong>Impact:</strong> Launched a cleaner, marketing-aligned website flow with high-speed page loads that improved usability and campaign readiness.</p>
         </article>
 
+        <!-- Prairie is an employer, not a client — Riley is on their payroll as
+             their web developer. The wording here says what the work is without
+             asserting a billing relationship that does not exist. -->
         <article class="card client reveal">
-          <img class="client-media" src="/assets/prairie.jpg" alt="Prairie.edu website" loading="lazy" width="1200" height="543" />
-          <h3>Prairie.edu</h3>
+          <img class="client-media" src="/assets/prairie.jpg" alt="Prairie College website" loading="lazy" width="1200" height="543" />
+          <h3>Prairie College</h3>
           <p class="client-link"><a href="https://prairie.edu" target="_blank" rel="noopener noreferrer">prairie.edu</a></p>
-          <p><strong>Challenge:</strong> Marketing and communications teams needed a refreshed website flow that felt modern and performed quickly across devices.</p>
-          <p><strong>Solution:</strong> Delivered contracting support to align design and page architecture with marketing goals, while optimizing assets and templates for speed.</p>
-          <p><strong>Impact:</strong> Produced a modernized web experience with stronger flow, faster load times, and easier campaign execution for internal teams.</p>
+          <p><strong>The work:</strong> Building and maintaining pages across the college website in WordPress and Elementor Pro, since November 2023.</p>
+          <p><strong>What it involves:</strong> New page builds to brand guidelines and accessibility standards, ongoing asset and template optimisation for speed, and working with designers and content staff on how each page is laid out.</p>
+          <p><strong>Result:</strong> A steadily modernised site that loads quickly across devices and is straightforward for the marketing team to run campaigns against.</p>
         </article>
       </div>
     </div>

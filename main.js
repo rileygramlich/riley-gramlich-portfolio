@@ -91,6 +91,12 @@
 
     var stack = Array.prototype.slice.call(document.querySelectorAll(".project"));
 
+    /* Each card's index drives its sticky offset and z-index in the stylesheet.
+       Written unconditionally — before the reduced-motion and viewport checks
+       below — because the stepped edge is layout, not animation, and it should
+       survive both. */
+    stack.forEach(function (card, i) { card.style.setProperty("--i", i); });
+
     /* The stylesheet drops the cards back to `position: static` below 720px
        wide or 620px tall, because stacking sheets taller than the viewport
        traps content behind them. Matching that here matters for more than
