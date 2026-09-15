@@ -1,9 +1,21 @@
+# Publishes the site to GitHub Pages on every push to main.
+#
+# There is no build step and nothing to install. The site is hand-written HTML,
+# one stylesheet and one script, so this workflow copies the files that make up
+# the site into _site/ and hands that to Pages.
+#
+# Copying into a staging directory rather than uploading the repository root is
+# deliberate: it keeps README.md, TODO.md and .github out of the published site,
+# and it means adding a file to the repo does not silently publish it.
+
 name: Deploy to GitHub Pages
 
 on:
     push:
         branches:
             - main
+    # So a redeploy never requires an empty commit.
+    workflow_dispatch:
 
 permissions:
     contents: read
@@ -24,28 +36,32 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: npm
-
-            - name: Install dependencies
-              run: npm ci
-
-            - name: Build
-              run: npm run build
-
-            - name: Add CNAME to build output
+            - name: Assemble the site
               run: |
-                  if [ -f CNAME ]; then
-                      cp CNAME build/CNAME
-                  fi
+                  mkdir -p _site
+                  cp index.html styles.css main.js _site/
+                  cp -r assets pdfs _site/
+                  cp favicon.ico robots.txt _site/
+                  # The custom domain has to be in the published output, not
+                  # just in the repo, or Pages drops it on every deploy.
+                  if [ -f CNAME ]; then cp CNAME _site/CNAME; fi
+
+            - name: Check nothing is missing
+              # A typo in the copy step above would otherwise publish a site
+              # with no stylesheet and still report success.
+              run: |
+                  for f in index.html styles.css main.js favicon.ico CNAME; do
+                      test -s "_site/$f" || { echo "missing or empty: $f"; exit 1; }
+                  done
+                  test -d _site/assets || { echo "missing: assets/"; exit 1; }
+                  test -s _site/pdfs/riley-gramlich-resume.pdf || { echo "missing: resume"; exit 1; }
+                  echo "published files:"
+                  find _site -type f | sort | sed 's/^/  /'
 
             - name: Upload Pages artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: build
+                  path: _site
 
             - name: Deploy to GitHub Pages
               id: deploy

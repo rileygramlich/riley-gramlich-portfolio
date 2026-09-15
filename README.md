@@ -1,150 +1,100 @@
-# Riley Gramlich Portfolio
+# Riley Gramlich — Portfolio
 
-Modern software portfolio site for Gramlich Software Services, focused on practical delivery for Calgary and Alberta organizations.
+Personal portfolio for [rileygramlich.dev](https://rileygramlich.dev/).
 
-## Live Site
+Hand-written HTML, CSS and JavaScript. **No framework, no dependencies, no build
+step.** It was a Create React App site until September 2026; the React version is
+in the git history if it is ever wanted.
 
-- [rileygramlich.dev](https://rileygramlich.dev/)
+## Running it
 
-## Home
+There is nothing to install.
 
-Serving Calgary and Alberta businesses with modern software systems that save teams hours each week.
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
 
-Gramlich Software Services helps local organizations streamline operations, modernize outdated tools, and launch websites that convert.
+Opening `index.html` directly in a browser mostly works too, but the absolute
+paths (`/styles.css`, `/assets/…`) resolve against the filesystem root, so use a
+server for anything you intend to trust.
 
-From WordPress and Elementor websites to automation workflows and legacy system modernization, every project is built for measurable business outcomes.
+## Files
 
-### Core Value Points
+| | |
+|---|---|
+| `index.html` | the entire page — every section, all the copy |
+| `styles.css` | one stylesheet; the palette lives in `:root` at the top |
+| `main.js` | nav, scroll reveals, active-section highlighting, contact form |
+| `assets/` | images, resized to 1200px wide (700px for the headshot) |
+| `pdfs/` | resume |
+| `CNAME` | custom domain — must be copied into the published output |
 
-- Faster admin workflows
-- Lower ongoing maintenance cost
-- Clear communication for non-technical teams
+Editing content means editing `index.html`. There is no data file and no
+templating layer; that is the trade for having no build.
 
-### Portfolio Photos
+## Design
 
-![Portfolio homepage view 1](src/imgs/portfolio-1.png)
-![Portfolio homepage view 2](src/imgs/portfolio-2.png)
+Dark glass on a near-black ground. Panels are translucent and blurred, so what
+passes behind them stays visible but unreadable. The ink ramp is four steps and
+every one of them clears WCAG AA against the ground; the accent is a bone white
+with almost no chroma, so colour never carries meaning on its own.
 
-## Services
+Dark only. The previous site had a light/dark toggle, which is gone — the glass
+treatment is built around one ground, so every colour is defined once and
+nothing is conditional. Say the word if you want the toggle back.
 
-Practical consulting and implementation support for small and mid-sized businesses across Calgary and Alberta.
+### The project stack
 
-- **Web Development**: Full-stack web development for frontend, backend APIs, and data layers, with WordPress/Elementor available when the fit is right.
-- **Automation and AI Workflows**: Connect business tools and automate repeatable tasks to reduce manual admin work.
-- **Systems Modernization**: Replace fragile legacy workflows with stable, maintainable systems that scale.
-- **Consulting and Contracting**: Focused technical leadership for scoped projects and ongoing product support.
+The projects are `position: sticky` with stepped `top` offsets and rising
+`z-index`, so each card pins under the header and the next one slides up over it,
+leaving a stepped edge behind. The occluding background is deliberately
+*mostly opaque* rather than pure glass — at full transparency the card
+underneath reads straight through and the stack turns to mush.
 
-## Contracting and Client Work
+A pinned card's own rect stops moving, so "how far have I been covered" cannot be
+measured from the card itself. `main.js` measures the **next** card's top edge
+closing on it and writes that ratio to `--overtake`, which the stylesheet uses to
+dim, shrink and blur the card as it goes under.
 
-Trusted by local organizations that value practical execution and measurable operational improvements.
+Two things this depends on, both easy to break:
 
-### UrbanTec Condominium Management Inc
+- `body` uses `overflow-x: clip`, **not** `hidden`. `hidden` makes the body a
+  scroll container, and a scroll container disables `position: sticky` in every
+  descendant — the whole stack would quietly become a plain list.
+- Below 720px wide or 620px tall the cards are taller than the viewport, where
+  sticky stacking traps content behind itself. The stack falls back to a normal
+  list at those sizes, and under `prefers-reduced-motion` it does too.
 
-- **Website**: [urbantec.ca](https://urbantec.ca)
-- **Challenge**: The marketing team needed a modern website experience with a clearer conversion flow and faster page delivery.
-- **Solution**: Partnered with marketing stakeholders to redesign content structure, simplify user journeys, and implement a performance-first front end.
-- **Impact**: Launched a cleaner, marketing-aligned website flow with high-speed page loads that improved usability and campaign readiness.
+## The contact form
 
-![UrbanTec website screenshot](src/imgs/UrbanTec-1.png)
+EmailJS, loaded from a CDN in `index.html` rather than installed. The service,
+template and public key IDs in `main.js` are the publishable kind — they are
+designed to sit in client-side code and were already public in the React build.
 
-### Prairie.edu
+If the script fails to load, the form says so and gives out an email address
+instead of silently doing nothing.
 
-- **Website**: [prairie.edu](https://prairie.edu)
-- **Challenge**: Marketing and communications teams needed a refreshed website flow that felt modern and performed quickly across devices.
-- **Solution**: Delivered contracting support to align design and page architecture with marketing goals, while optimizing assets and templates for speed.
-- **Impact**: Produced a modernized web experience with stronger flow, faster load times, and easier campaign execution for internal teams.
+## Images
 
-![Prairie.edu website screenshot](src/imgs/prairie-1.png)
+`ffmpeg` was used to resize, which took the image payload from 6.3 MB to 636 KB.
+To add another:
 
-## Projects
+```bash
+ffmpeg -i original.png -vf "scale=1200:-2" -q:v 4 assets/name.jpg
+```
 
-Selected work focused on operational efficiency, clearer workflows, and practical business impact.
+Keep the `width` and `height` attributes on the `<img>` tag accurate — they stop
+the page reflowing as images load.
 
-### BlockTime
+## Deploying
 
-- **Live**: [BlockTime App](https://rileygramlich.github.io/BlockTime/)
-- **GitHub**: [BlockTime Repository](https://github.com/rileygramlich/BlockTime)
-- **Problem**: Students were struggling to balance assignments, deadlines, and study sessions across multiple classes.
-- **Solution**: Built as a group project, BlockTime helps students organize tasks, prioritize coursework, and plan their week clearly.
-- **Impact**: Improved day-to-day time management by turning scattered school tasks into one clear planning flow.
+Push to `main`. The workflow in `.github/workflows/deploy.yml` copies the site
+files into `_site/`, asserts none of them are missing, and publishes to GitHub
+Pages. It installs nothing.
 
-![BlockTime screenshot](src/imgs/Block-Time-1.png)
+## Outstanding
 
-### Scribist
-
-- **Project Link**: [Scribist](https://github.com/rileygramlich/scribist)
-- **GitHub**: [Scribist Repository](https://github.com/rileygramlich/scribist)
-- **Problem**: Writers needed a distraction-free environment with real-time collaboration options.
-- **Solution**: Delivered a MERN-based writing platform with editing tools and performance-focused UX.
-- **Impact**: Improved writing focus while supporting collaborative content workflows.
-
-### Glossa Galore
-
-- **Project Link**: [Glossa Galore](https://github.com/rileygramlich/glossa-galore)
-- **GitHub**: [Glossa Galore Repository](https://github.com/rileygramlich/glossa-galore)
-- **Problem**: Language learners needed a stronger community layer for consistent engagement.
-- **Solution**: Created a social language-learning platform with account management and structured interactions.
-- **Impact**: Helped users stay engaged and practice more consistently.
-
-## About
-
-I am Riley Gramlich, a Calgary-based software developer focused on practical solutions for small and mid-sized teams. My work blends product thinking with hands-on engineering so projects ship quickly and stay maintainable.
-
-Whether the engagement is a new website, internal tool, or process automation initiative, the goal is the same: reduce friction, improve reliability, and give teams systems they can confidently operate.
-
-![Riley Gramlich headshot](src/imgs/headshot.jpg)
-
-### What Clients Value Most
-
-- Clear timelines and straightforward communication
-- Solutions that fit real team workflows
-- Full-stack delivery from UI through backend
-- Modern tools without unnecessary complexity
-- Calgary and Alberta business context
-
-### Full-Stack Skills
-
-#### Frontend
-
-- React and JavaScript
-- TypeScript
-- Responsive UI architecture
-- Component libraries and design systems
-
-#### Backend
-
-- Node.js and Express APIs
-- Python automation services
-- Authentication and role-based access
-- Third-party integrations
-
-#### Data and Cloud
-
-- SQL and PostgreSQL
-- REST data modeling
-- Deployment and environment configuration
-- Monitoring and operational support
-
-#### Delivery
-
-- Discovery and technical scoping
-- Workflow automation with AI tooling
-- Legacy system modernization
-- Ongoing consulting and iteration
-
-## Contact
-
-Start a project conversation: tell me what your team is trying to improve and I will follow up with a practical next step.
-
-## Resume and Socials
-
-- **Resume**: [Riley Gramlich Resume PDF](https://rileygramlich.dev/pdfs/riley-gramlich-resume.pdf)
-- **GitHub**: [rileygramlich](https://github.com/rileygramlich)
-- **LinkedIn**: [Riley Gramlich](https://www.linkedin.com/in/rileygramlich/)
-- **X (Twitter)**: [@rileygramlich](https://x.com/rileygramlich)
-
-## Technologies Used
-
-- React
-- JavaScript
-- CSS
+See [TODO.md](TODO.md) — mainly getting Scribist and Glossa Galore hosted again,
+since both of their demo links are dead and the cards currently point only at
+GitHub.

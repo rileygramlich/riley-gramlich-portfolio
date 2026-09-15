@@ -1,0 +1,835 @@
+/* ============================================================================
+   Riley Gramlich — portfolio
+   One stylesheet, no build step, no dependencies.
+
+   Dark glass on a near-black ground. Panels are translucent and blurred so what
+   passes behind them stays visible but unreadable, which is what makes the
+   project stack work: each card is a sheet of glass sliding over the last one.
+
+   Motion is deliberately high-contrast — things travel, scale and sharpen
+   rather than fading politely. All of it collapses to nothing under
+   prefers-reduced-motion.
+   ========================================================================== */
+
+:root {
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    /* ground */
+    --n-950: #08080a;
+    --n-900: #0e0e11;
+    --n-850: #141417;
+    --n-800: #1c1c20;
+
+    /* ink — ratios against --n-950; every step clears WCAG AA for body text */
+    --n-0:   #fafafb;
+    --n-100: #dedee3;
+    --n-300: #a9a9b3;
+    --n-500: #85858f;
+
+    --accent:      #f2efe8;
+    --accent-dim:  #c4c0b7;
+    --accent-deep: #8d8a83;
+    --accent-ink:  #0e0e11;
+
+    --positive: #9fb8a3;
+    --caution:  #c8a97e;
+
+    /* glass — fill is what the sheet adds, rim is its lit edge */
+    --glass:      rgba(255, 255, 255, 0.045);
+    --glass-hi:   rgba(255, 255, 255, 0.075);
+    --glass-soft: rgba(14, 14, 17, 0.72);   /* opaque enough to occlude */
+    --line:       rgba(255, 255, 255, 0.10);
+    --line-hi:    rgba(255, 255, 255, 0.22);
+    --blur:       22px;
+
+    --radius:      16px;
+    --radius-sm:   10px;
+    --radius-pill: 999px;
+
+    --shell: min(1100px, 92vw);
+    --nav-h: 64px;
+    --stick: calc(var(--nav-h) + 1.75rem);
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: var(--n-950); }
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--n-100);
+    background: var(--n-950);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* `clip`, not `hidden`. overflow-x:hidden on body turns it into a scroll
+       container, and a scroll container silently kills `position: sticky` in
+       every descendant — which would take the entire project stack with it.
+       `clip` gives the same protection against sideways scroll without
+       establishing one. */
+    overflow-x: clip;
+}
+
+/* A single fixed wash behind everything, so the glass has something to refract
+   rather than sitting on flat black. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(60vw 48vw at 10% -8%, rgba(255, 255, 255, 0.055), transparent 62%),
+        radial-gradient(52vw 42vw at 96% 4%, rgba(255, 255, 255, 0.035), transparent 60%);
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    color: var(--n-0);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.028em;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.92em;
+    padding: 0.1rem 0.32rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--n-100);
+}
+
+::selection { background: rgba(242, 239, 232, 0.24); color: var(--n-0); }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    padding: 0.75rem 1.1rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-radius: 0 0 var(--radius-sm) 0;
+    font-weight: 600;
+}
+.skip:focus { left: 0; }
+
+.shell { width: var(--shell); margin: 0 auto; }
+
+section {
+    position: relative;
+    padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+    scroll-margin-top: calc(var(--nav-h) + 20px);
+}
+
+/* ================================================================== nav === */
+
+.nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 900;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    background: rgba(8, 8, 10, 0.55);
+    border-bottom: 1px solid transparent;
+    backdrop-filter: blur(var(--blur)) saturate(150%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(150%);
+    transition: background 0.4s var(--ease), border-color 0.4s var(--ease), height 0.4s var(--ease);
+    animation: drop 0.7s var(--ease) both;
+}
+
+.nav.is-stuck {
+    height: 54px;
+    background: rgba(8, 8, 10, 0.82);
+    border-bottom-color: var(--line);
+}
+
+@keyframes drop {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: none; }
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.brand { display: inline-flex; align-items: center; gap: 0.7rem; flex-shrink: 0; }
+
+.brand-mark {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+    box-shadow: 0 0 0 4px rgba(242, 239, 232, 0.10);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--n-0);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.brand-text em {
+    font-style: normal;
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--n-500);
+}
+
+.nav-links { display: flex; align-items: center; gap: 0.1rem; }
+
+.nav-links a {
+    position: relative;
+    padding: 0.5rem 0.65rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--n-500);
+    white-space: nowrap;
+    transition: color 0.25s var(--ease);
+}
+
+.nav-links a:hover { color: var(--n-0); }
+.nav-links a.is-active { color: var(--n-0); }
+
+/* the marker slides in under whichever section is in view */
+.nav-links a.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0.65rem; right: 0.65rem; bottom: 0.2rem;
+    height: 1.5px;
+    border-radius: 2px;
+    background: var(--accent);
+    animation: wipe 0.4s var(--ease) both;
+}
+
+@keyframes wipe {
+    from { transform: scaleX(0); opacity: 0; }
+    to   { transform: scaleX(1); opacity: 1; }
+}
+
+.nav-actions { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; }
+
+.nav-cta { height: 34px; padding: 0.5rem 0.95rem; font-size: 0.82rem; line-height: 1; }
+
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px; height: 38px;
+    padding: 0 9px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 100%; height: 1.5px;
+    border-radius: 2px;
+    background: var(--n-0);
+    transition: transform 0.35s var(--ease);
+}
+
+.burger.is-open span:first-child { transform: translateY(3.25px) rotate(45deg); }
+.burger.is-open span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* ================================================================ section === */
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--n-500);
+    margin-bottom: 1.2rem;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 26px; height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+}
+
+.section-title { font-size: clamp(1.9rem, 3.6vw, 2.8rem); max-width: 18ch; }
+
+.section-sub {
+    margin-top: 1.15rem;
+    max-width: 58ch;
+    font-size: clamp(0.98rem, 1.5vw, 1.06rem);
+    color: var(--n-300);
+}
+
+.section-head { margin-bottom: clamp(2.25rem, 4vw, 3.25rem); }
+
+@media (min-width: 1000px) {
+    .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        column-gap: clamp(2rem, 5vw, 4rem);
+        align-items: end;
+    }
+    .section-head > .eyebrow { grid-column: 1 / -1; }
+    .section-head > .section-title { grid-column: 1; max-width: none; }
+    .section-head > .section-sub { grid-column: 2; margin-top: 0; padding-bottom: 0.4rem; }
+}
+
+/* =================================================================== hero === */
+
+.hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + clamp(2rem, 6vw, 4rem));
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.hero-title {
+    font-size: clamp(2.8rem, 9vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+}
+
+.hero-lede {
+    margin-top: 1.4rem;
+    font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--n-0);
+    max-width: 26ch;
+}
+
+.hero-sub { margin-top: 1.1rem; max-width: 52ch; color: var(--n-300); }
+
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; }
+
+.hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1.8rem;
+    margin-top: 2.4rem;
+    padding-top: 1.7rem;
+    border-top: 1px solid var(--line);
+}
+
+.hero-points li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: 0.83rem;
+    letter-spacing: 0.01em;
+    color: var(--n-500);
+}
+
+.hero-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.68em;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent-deep);
+}
+
+/* =================================================================== btns === */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    max-width: 100%;
+    transition: transform 0.3s var(--ease), filter 0.25s var(--ease),
+                background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(1.05); transform: translateY(-2px); }
+.btn-primary:disabled { opacity: 0.45; cursor: default; filter: none; transform: none; }
+
+.btn-ghost {
+    color: var(--n-0);
+    border-color: var(--line);
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.btn-ghost:hover { background: var(--glass-hi); border-color: var(--line-hi); transform: translateY(-2px); }
+
+.btn-sm { padding: 0.6rem 1.15rem; font-size: 0.83rem; }
+
+.btn:active { transform: translateY(0); }
+
+/* ============================================================ glass cards === */
+
+.grid { display: grid; gap: 0.9rem; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.card {
+    position: relative;
+    padding: 1.6rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(140%);
+    overflow: hidden;
+    transition: transform 0.4s var(--ease), border-color 0.35s var(--ease),
+                background 0.35s var(--ease);
+}
+
+/* a hairline of light along the top edge — what sells the sheet as glass */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    opacity: 0.5;
+    transition: opacity 0.35s var(--ease);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-hi);
+    background: var(--glass-hi);
+}
+
+.card:hover::after { opacity: 1; }
+
+.card h3 { font-size: 1.02rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+.card p { font-size: 0.89rem; color: var(--n-300); }
+
+.card-kicker {
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--n-500);
+    margin-bottom: 0.5rem;
+}
+
+.stack-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.9rem; }
+
+.stack-list li {
+    position: relative;
+    padding-left: 1.05rem;
+    font-size: 0.86rem;
+    color: var(--n-300);
+}
+
+.stack-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.7em;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent-deep);
+}
+
+/* ========================================================= project stack ===
+   Each card sticks a little lower than the one before it, so as you scroll the
+   next sheet of glass slides up over the last and leaves a stepped edge behind.
+   The occluding background has to be mostly opaque — pure glass would let the
+   card underneath read straight through and the stack would turn to mush.
+
+   --overtake is written by main.js: 0 while a card is the top of the stack,
+   rising to 1 as the next card covers it. The card dims, shrinks and blurs as
+   it goes under.
+   ========================================================================== */
+
+.projects { display: flex; flex-direction: column; gap: clamp(1.5rem, 3vw, 2.5rem); }
+
+.project {
+    position: sticky;
+    top: var(--stick);
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--glass-soft);
+    backdrop-filter: blur(var(--blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(140%);
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.06) inset,
+                0 24px 60px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+
+    --overtake: 0;
+    transform: scale(calc(1 - var(--overtake) * 0.045));
+    opacity: calc(1 - var(--overtake) * 0.45);
+    filter: blur(calc(var(--overtake) * 2.5px));
+    transform-origin: top center;
+    will-change: transform, opacity, filter;
+}
+
+/* the stepped offsets that make the stack legible as a stack */
+.project:nth-child(1) { top: calc(var(--stick) + 0px);  z-index: 1; }
+.project:nth-child(2) { top: calc(var(--stick) + 12px); z-index: 2; }
+.project:nth-child(3) { top: calc(var(--stick) + 24px); z-index: 3; }
+.project:nth-child(4) { top: calc(var(--stick) + 36px); z-index: 4; }
+.project:nth-child(5) { top: calc(var(--stick) + 48px); z-index: 5; }
+.project:nth-child(6) { top: calc(var(--stick) + 60px); z-index: 6; }
+
+/* the same lit top edge as the cards */
+.project::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0.6;
+}
+
+/* Cards with no screenshot run their copy full width instead of leaving a hole. */
+.project:not(:has(.project-media)) { grid-template-columns: 1fr; }
+
+.project-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-right: 1px solid var(--line);
+}
+
+.project-body { padding: clamp(1.5rem, 3vw, 2.1rem); }
+
+.project-label {
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--n-500);
+}
+
+.project-name {
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    margin: 0.5rem 0 1.2rem;
+    letter-spacing: -0.03em;
+}
+
+/* A label column rather than stacked dt/dd — half the vertical space, which
+   matters when every card has to stay shorter than the viewport. */
+.project-facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0.6rem 1.25rem;
+    align-items: baseline;
+}
+
+.project-facts dt {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--n-500);
+    padding-top: 0.25em;
+}
+
+.project-facts dd {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--n-300);
+}
+
+.project-note {
+    margin-top: 1.2rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--n-300);
+}
+
+.project-note a { color: var(--n-0); text-decoration: underline; text-underline-offset: 3px; }
+
+.project-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+
+/* ============================================================ client work === */
+
+.client { display: flex; flex-direction: column; padding: 0; }
+.client-media { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--line); }
+.client h3 { padding: 1.4rem 1.5rem 0; }
+.client p { padding: 0 1.5rem; }
+.client p + p { margin-top: 0.6rem; }
+.client p:last-child { padding-bottom: 1.5rem; }
+.client-link { margin-top: 0.2rem; font-size: 0.83rem; }
+.client-link a { color: var(--n-0); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ================================================================== about === */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+}
+
+.about-copy p { color: var(--n-100); font-size: 1.02rem; }
+.about-copy p + p { margin-top: 1.1rem; }
+.about-copy .btn { margin-top: 1.9rem; }
+
+.about-photo { margin: 0; }
+
+.about-photo img {
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.about-how {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: clamp(2rem, 4vw, 2.5rem);
+    border-top: 1px solid var(--line);
+}
+
+.about-how h3 { font-size: 1.02rem; margin-bottom: 1.1rem; }
+
+.ticks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem 2rem; }
+
+.ticks li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.89rem;
+    color: var(--n-300);
+}
+
+.ticks li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.5em;
+    width: 8px; height: 4px;
+    border-left: 1.5px solid var(--accent-deep);
+    border-bottom: 1.5px solid var(--accent-deep);
+    transform: rotate(-45deg);
+}
+
+/* ================================================================ contact === */
+
+.contact-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 620px;
+    padding: clamp(1.5rem, 3vw, 2.1rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(140%);
+}
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.field label { font-size: 0.8rem; font-weight: 600; color: var(--n-100); letter-spacing: -0.005em; }
+
+.optional { font-weight: 400; color: var(--n-500); }
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(0, 0, 0, 0.28);
+    color: var(--n-0);
+    font-family: inherit;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--line-hi);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.field input:user-invalid,
+.field textarea:user-invalid { border-color: var(--caution); }
+
+.contact-form .btn { justify-self: start; }
+
+.contact-status { font-size: 0.85rem; color: var(--n-300); min-height: 1.4em; }
+.contact-status.is-error { color: var(--caution); }
+.contact-status.is-ok { color: var(--positive); }
+
+/* ================================================================= footer === */
+
+.footer { padding: 3.5rem 0 2rem; border-top: 1px solid var(--line); }
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-name { font-size: 1.02rem; font-weight: 600; color: var(--n-0); letter-spacing: -0.02em; }
+.footer-by { margin-top: 0.15rem; font-size: 0.78rem; color: var(--n-500); }
+.footer-consulting { font-size: 0.85rem; color: var(--n-300); max-width: 34ch; }
+.footer-consulting a { color: var(--n-0); text-decoration: underline; text-underline-offset: 3px; }
+
+.socials { display: flex; gap: 0.6rem; }
+
+.socials a {
+    display: grid;
+    place-items: center;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--n-500);
+    transition: color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.3s var(--ease);
+}
+
+.socials a:hover { color: var(--n-0); border-color: var(--line-hi); transform: translateY(-2px); }
+
+.footer-legal {
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.76rem;
+    color: var(--n-500);
+}
+
+/* ================================================================= reveal ===
+   Deliberately not a polite fade: things arrive from further down, slightly
+   small and slightly soft, and snap into place on a sharp ease.
+   ========================================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+    filter: blur(6px);
+    transition:
+        opacity 0.7s var(--ease),
+        transform 0.7s var(--ease),
+        filter 0.7s var(--ease);
+}
+
+.reveal.is-in { opacity: 1; transform: none; filter: blur(0); }
+
+/* a short stagger within a grid, so a row of cards lands in sequence */
+.grid > .reveal:nth-child(2) { transition-delay: 0.06s; }
+.grid > .reveal:nth-child(3) { transition-delay: 0.12s; }
+.grid > .reveal:nth-child(4) { transition-delay: 0.18s; }
+.grid > .reveal:nth-child(5) { transition-delay: 0.24s; }
+.grid > .reveal:nth-child(6) { transition-delay: 0.30s; }
+
+/* ============================================================= responsive === */
+
+@media (max-width: 1040px) {
+    .nav-links {
+        position: fixed;
+        inset: var(--nav-h) 0 auto 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 4vw 1.25rem;
+        background: rgba(8, 8, 10, 0.92);
+        backdrop-filter: blur(var(--blur));
+        -webkit-backdrop-filter: blur(var(--blur));
+        border-bottom: 1px solid var(--line);
+        transform: translateY(-120%);
+        transition: transform 0.42s var(--ease);
+    }
+    .nav-links.is-open { transform: none; }
+    .nav-links a { padding: 0.9rem 0.25rem; border-bottom: 1px solid var(--line); font-size: 1rem; }
+    .nav-links a.is-active::after { display: none; }
+    .burger { display: flex; }
+    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+    .project { grid-template-columns: 1fr; }
+    .project-media { border-right: 0; border-bottom: 1px solid var(--line); max-height: 200px; }
+    .project-facts { grid-template-columns: 1fr; gap: 0.15rem; }
+    .project-facts dt { padding-top: 0.6rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { max-width: 300px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .ticks { grid-template-columns: 1fr; }
+}
+
+/* The stack needs room to travel. On a short screen the cards are taller than
+   the viewport, so sticky stacking traps content — fall back to a plain list. */
+@media (max-width: 720px), (max-height: 620px) {
+    .project {
+        position: static;
+        transform: none;
+        opacity: 1;
+        filter: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .nav-cta { display: none; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; filter: none; }
+    /* No dimming or blurring as cards stack — the effect is the motion, and
+       without motion it is just content that has gone hard to read. */
+    .project { transform: none; opacity: 1; filter: none; }
+}
