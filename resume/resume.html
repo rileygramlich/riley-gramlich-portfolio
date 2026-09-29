@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Riley Gramlich Resume - Software Developer 2026</title>
+<style>
+@font-face{font-family:'Merriweather';font-style:italic;font-weight:400;src:url('fonts/Merriweather-400i.ttf') format('truetype');}
+@font-face{font-family:'Merriweather';font-style:italic;font-weight:700;src:url('fonts/Merriweather-700i.ttf') format('truetype');}
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:400;src:url('fonts/Merriweather-400.ttf') format('truetype');}
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:700;src:url('fonts/Merriweather-700.ttf') format('truetype');}
+@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:url('fonts/OpenSans-400.ttf') format('truetype');}
+@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:url('fonts/OpenSans-600.ttf') format('truetype');}
+  @page { size: A4; margin: 11mm 13mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+    font-size: 8.55pt;
+    line-height: 1.33;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+  }
+  header { text-align: center; margin-bottom: 9pt; }
+  h1 {
+    font-size: 18pt;
+    letter-spacing: 0.4pt;
+    margin: 0 0 2pt;
+    font-weight: 600;
+  }
+  .tagline {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 8.4pt;
+    letter-spacing: 1.1pt;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    margin-bottom: 4pt;
+  }
+  .contact { font-size: 8.1pt; color: #2a2a2a; }
+  .contact a { color: #2a2a2a; text-decoration: none; }
+  .contact span { margin: 0 3pt; color: #999; }
+  h2 {
+    font-size: 8.2pt;
+    letter-spacing: 1.1pt;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+    margin: 9pt 0 4pt;
+    padding-bottom: 1.5pt;
+    border-bottom: 0.8pt solid #c8c8c8;
+  }
+  p.summary { margin: 0; }
+  ul { margin: 0; padding-left: 13pt; }
+  li { margin-bottom: 1.2pt; }
+  .skills { margin: 0; padding: 0; list-style: none; }
+  .skills li { margin-bottom: 2.2pt; padding-left: 0; }
+  .skills .label { font-weight: 700; }
+  .entry { margin-bottom: 5.5pt; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8pt;
+  }
+  .role { font-weight: 700; }
+  .org { font-weight: 400; }
+  .dates {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #555;
+    white-space: nowrap;
+    letter-spacing: 0.3pt;
+  }
+  .proj-link {
+    font-size: 7.6pt;
+    color: #444;
+    text-decoration: none;
+  }
+  .entry-head + .proj-link { display: block; margin-bottom: 1pt; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Riley Gramlich</h1>
+  <div class="tagline">Full-Stack Developer</div>
+  <div class="contact">
+    <a href="mailto:rileygramlich@gmail.com">rileygramlich@gmail.com</a><span>&bull;</span>Calgary, AB<span>&bull;</span><a href="https://rileygramlich.dev/">rileygramlich.dev</a><span>&bull;</span><a href="https://github.com/rileygramlich">github.com/rileygramlich</a>
+  </div>
+</header>
+
+<h2>Summary</h2>
+<p class="summary">
+  Full-stack developer with production experience owning live client sites end to end &mdash; build,
+  hosting, performance, and DNS &mdash; alongside hands-on work building agent systems on LLM APIs.
+  Pursuing a BSc in Computer Science while shipping and supporting real systems for paying clients.
+</p>
+
+<h2>Skills</h2>
+<ul class="skills">
+  <li><span class="label">Languages:</span> JavaScript, TypeScript, Python, C#, C++, SQL, HTML, CSS</li>
+  <li><span class="label">Frameworks &amp; Libraries:</span> React, Angular, Node.js, Express, Django, Flask, ASP.NET, WordPress / Elementor Pro</li>
+  <li><span class="label">AI &amp; Agentic Development:</span> Claude Code (agentic coding workflows, subagents, skills, hooks, automation); Claude&nbsp;/&nbsp;Anthropic API integration (tool use, streaming, prompt caching); Model Context Protocol (MCP) servers</li>
+  <li><span class="label">Data &amp; Infrastructure:</span> PostgreSQL, MongoDB, RESTful APIs, AWS, Google Cloud, Cloudflare / DNS, Linux servers, Git &amp; GitHub, Agile development</li>
+  <li><span class="label">Machine Learning:</span> TensorFlow, PyTorch, deep learning fundamentals</li>
+</ul>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">Senior Web Developer</span> (Contract), <span class="org">UrbanTec Property Management &mdash; Calgary, AB</span></div>
+    <div class="dates">Apr 2025 &ndash; Present</div>
+  </div>
+  <ul>
+    <li>Sole developer on urbantec.ca, a WordPress/Elementor Pro site for a Calgary condominium management firm &mdash; own the build, hosting, performance, and DNS end to end.</li>
+    <li>Migrated the domain to Cloudflare, preserving SPF/DKIM and third-party mail senders through the cutover and moving TLS to Full (strict).</li>
+    <li>Traced a site-wide caching failure to an Elementor split-test cookie set on every response, which blocked LiteSpeed from storing pages so first-time visitors never hit cache, and rebuilt the cache rules around it.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">Web Developer</span>, <span class="org">Prairie College &mdash; Three Hills, AB</span></div>
+    <div class="dates">Nov 2023 &ndash; Present</div>
+  </div>
+  <ul>
+    <li>Build and maintain pages across the college website in WordPress, keeping performance and user experience consistent site-wide.</li>
+    <li>Use Elementor Pro to produce interactive, on-brand pages that meet accessibility standards.</li>
+    <li>Collaborate with designers and content stakeholders to plan and implement site strategy.</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">GSS Assist</span> &mdash; <span class="org">AI receptionist for phone and text</span></div>
+    <div class="dates">Node &middot; Claude API &middot; Twilio</div>
+  </div>
+  <a class="proj-link" href="https://reception.rileygramlich.dev">reception.rileygramlich.dev</a>
+  <ul>
+    <li>Voice and SMS/WhatsApp agent that answers on the first ring, books into Google Calendar mid-call, takes messages, and transfers to a human when it should.</li>
+    <li>Built on the Claude API with tool use driving every action; Twilio ConversationRelay streams live speech over WebSockets into the agent loop.</li>
+    <li>Node.js/Express, deployed with Docker and Caddy; each client configured from a single JSON file, with a rate-limited public demo running the real agent against a sandboxed calendar.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">Scribist</span> &mdash; <span class="org">full-stack writing app</span></div>
+    <div class="dates">MERN</div>
+  </div>
+  <a class="proj-link" href="https://github.com/rileygramlich/scribist">github.com/rileygramlich/scribist</a>
+  <ul>
+    <li>Full document creation and editing with live multi-user collaboration over WebSockets.</li>
+    <li>Berserk Mode: a timed writing mode that pushes users toward a target word count.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">Glossa Galore</span> &mdash; <span class="org">language-learning app</span></div>
+    <div class="dates">MEN</div>
+  </div>
+  <a class="proj-link" href="https://github.com/rileygramlich/glossa-galore">github.com/rileygramlich/glossa-galore</a>
+  <ul>
+    <li>Flashcard-driven vocabulary builder built as a branded social network with user accounts and shared decks.</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">BSc, Computer Science</span> &mdash; <span class="org">Mount Royal University, Calgary</span> <span style="font-size:8.7pt;color:#555;">(in progress)</span></div>
+    <div class="dates">Sep 2024 &ndash; Apr 2028</div>
+  </div>
+  <ul>
+    <li>Coursework in algorithms, data structures, software development, and systems design.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div><span class="role">Software Engineering Immersive</span> &mdash; <span class="org">General Assembly, Toronto</span></div>
+    <div class="dates">Oct 2022 &ndash; Jan 2023</div>
+  </div>
+  <ul>
+    <li>Intensive full-stack bootcamp: MERN stack, Python/Django/SQL, Git, and command-line workflows.</li>
+  </ul>
+</div>
+
+</body>
+</html>
